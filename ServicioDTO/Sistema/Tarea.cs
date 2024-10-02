@@ -20,5 +20,7 @@ namespace com.msc.services.dto
         public string Titulo { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
+        [DataMember]
+        public bool Completado { get; set; }
     }
 }

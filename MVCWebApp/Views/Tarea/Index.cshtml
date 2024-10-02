@@ -30,6 +30,7 @@
                             <tr>
                                 <th>Titulo</th>
                                 <th>Descripcion</th>
+                                <th>Completado</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -39,6 +40,7 @@
                                 <tr id="row_@item.Id">
                                     <td>@item.Titulo</td>
                                     <td>@item.Descripcion</td>
+                                    <td>@(item.Completado ? "SI" : "NO")</td>
                                     <td>
                                         <div class="hidden-xs hidden-sm visible-md visible-lg">
                                             <a href="#" class="view-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/Tarea/View"><span class="glyphicon glyphicon-list-alt"></span> Ver</a> &nbsp;&nbsp;
@@ -57,7 +59,7 @@
                     </table>
                     <script type="text/javascript">
                             $(document).ready(function () {
-                                _formLoad("Tarea", [null, null, { orderable: false }]);
+                                _formLoadTarea("Tarea", [null, null, null, { orderable: false }]);
                             });
                     </script>
                 </div>

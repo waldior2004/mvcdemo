@@ -1,7 +1,7 @@
 ﻿@model com.msc.infraestructure.entities.Tarea
-@{ 
+@{
     Layout = null;
-    using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Tarea", FormMethod.Post, new { @class = "form-horizontal", role = "form", id="frmTarea" }))
+    using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Tarea", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmTarea" }))
     {
         @Html.AntiForgeryToken()
         if (Model.Id == 0)
@@ -32,6 +32,12 @@
             <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Descripción" data-toggle="tooltip" data-placement="right">
                 @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control has-feedback-left", placeholder = "Descripción" })
                 <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12" style="padding-bottom: 10px;">
+                @Html.CheckBoxFor(m => m.Completado)
+                @Html.DisplayNameFor(m => m.Completado)
             </div>
         </div>
     }

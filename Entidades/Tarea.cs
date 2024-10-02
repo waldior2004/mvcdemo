@@ -27,6 +27,10 @@
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }
 
+        [Required]
+        [DisplayName("Completado")]
+        public bool Completado { get; set; }
+
         [Column("AUD_FECMOD")]
         public DateTime AudUpdate { get; set; }
 

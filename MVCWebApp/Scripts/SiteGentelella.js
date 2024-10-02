@@ -1050,6 +1050,88 @@ function _formLoad(name, _columns) {
 
 }
 
+
+function _formLoadTarea(name, _columns) {
+    selected = [];
+
+    var table = $("#datatable-responsive").DataTable({
+        columns: _columns,
+        select: _select,
+        language: _language,
+        createdRow: function (row, data, dataIndex) {
+            if (data[2] == "SI") {
+                $(row).addClass("fila-azul");
+            } else {
+                $(row).addClass("fila-rojo");
+            }
+        },
+        drawCallback: function (settings) {
+            _formEditDelete(name);
+        }
+    });
+
+    table.on('responsive-display', function (e, datatable, row, showHide, update) {
+        _formEditDelete(name);
+    });
+
+    _selectBehaviour();
+
+    $(".new-item").unbind().bind("click", function (ev) {
+        ev.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: _root + $(this).attr("data-val-url"),
+            data: { id: 0 },
+            contentType: "json",
+            cache: false,
+            success: function (response) {
+                if (response.indexOf("Error de Sistema") >= 0)
+                    _setErrorMessage(response);
+                else {
+                    $("#my" + name + " .btn-primary").css("display", "inline");
+                    $("#my" + name + " .modal-body").html(response);
+                    $("#my" + name).modal("show");
+                    _setToolTipsForm();
+                }
+            },
+            failure: function (response) {
+                _setErrorMessage("Error objeto ajax");
+            },
+            error: function (response) {
+                _setErrorMessage("Error objeto ajax");
+            }
+        });
+    });
+
+    _formDetailDeleteGroup(name);
+
+    $("#my" + name + " .btn-primary").unbind().bind("click", function (ev) {
+        $.ajax({
+            type: "POST",
+            url: _root + $("#frm" + name).attr("action"),
+            data: $("#frm" + name).serialize(),
+            dataType: "json",
+            cache: false,
+            success: function (response) {
+                if (response.Id != 0) {
+                    _setErrorMessage(response.Descripcion);
+                } else {
+                    $("#my" + name).modal("hide");
+                    _setSuccessMessage(response.Descripcion);
+                    $("#sidebar-menu").find("a[href='" + response.Metodo + "']").click();
+                }
+            },
+            failure: function (response) {
+                _setErrorMessage("Error objeto ajax");
+            },
+            error: function (response) {
+                _setErrorMessage("Error objeto ajax");
+            }
+        });
+    });
+
+}
+
 function _formEditDelete(name) {
     $(".view-item").unbind().bind("click", function (ev) {
         ev.stopPropagation();

@@ -137,3 +137,11 @@ table.jambo_table a:hover {
 #previews .file-row.dz-success .delete {
     display: inline;
 }
+
+.fila-rojo {
+    color: indianred !important;
+}
+
+.fila-azul {
+    color: royalblue !important;
+}

@@ -101,6 +101,7 @@ namespace com.msc.infraestructure.dal
                             {
                                 exists.Titulo = obj.Titulo;
                                 exists.Descripcion = obj.Descripcion;
+                                exists.Completado = obj.Completado;
                                 exists.AudUpdate = DateTime.Now;
                                 objResp = MessagesApp.BackAppMessage(MessageCode.UpdateOK);
                             }

@@ -55,7 +55,7 @@ namespace com.msc.frontend.mvc.Controllers
         {
             try
             {
-                return View("Edit", new Tarea { Id = 0, Descripcion = "", Titulo = "" });
+                return View("Edit", new Tarea { Id = 0, Descripcion = "", Titulo = "", Completado = false });
             }
             catch (Exception ex)
             {
