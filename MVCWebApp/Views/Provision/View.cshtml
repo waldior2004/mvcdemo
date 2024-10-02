@@ -1,0 +1,100 @@
+﻿@model com.msc.infraestructure.entities.Provision
+@{ 
+    Layout = null;
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdEmpresa, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Empresa.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdSucursal, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Sucursal.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdTipoProvision, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.TipoProvision.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdCuentaContable, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.CuentaContable.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdProveedor, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Proveedor.RazonSocial</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdMoneda, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Moneda.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdEstado, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Estado.Descripcion</p>
+        </div>
+    </div>    
+    <div class="row">
+        @Html.LabelFor(m => m.Codigo, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Codigo</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.User, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.User</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Monto, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Monto</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Concepto, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Concepto</p>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-3 control-label" for="">Mes - Año Provisión </label>
+        <div class="col-md-8">
+            <p>@Model.MesProv / @Model.AnioProv </p>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-3 control-label" for="">Mes - Año Servicio </label>
+        <div class="col-md-8">
+            <p>@Model.MesServ / @Model.AnioServ </p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.ComentarioUno, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.ComentarioUno</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.ComentarioDos, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.ComentarioDos</p>
+        </div>
+    </div>
+}

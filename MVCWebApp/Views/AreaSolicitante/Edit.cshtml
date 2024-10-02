@@ -1,0 +1,50 @@
+﻿@model com.msc.infraestructure.entities.AreaSolicitante
+@{ 
+    Layout = null;
+    using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "AreaSolicitante", FormMethod.Post, new { @class = "form-horizontal", role = "form", id="frmAreaSolicitante" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model.Id == 0)
+        {
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+                @Html.HiddenFor(m => m.Id)
+                <div class="col-md-8 control-label" style="text-align: left;">
+                    <span>@Model.Id</span>
+                </div>
+            </div>
+        }
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Empresa de la Area Solicitante" data-toggle="tooltip" data-placement="right">
+                @Html.DropDownListFor(m => m.IdEmpresa, (List<SelectListItem>)ViewBag.lstEmpresas, new { @class = "form-control has-feedback-left" })
+                <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Breve Descripción" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control has-feedback-left", placeholder = "Descripción" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Abreviación" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Abreviatura, new { @class = "form-control has-feedback-left", placeholder = "Abreviación" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Correo Representante" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.CorreoRep, new { @class = "form-control has-feedback-left", placeholder = "Correo Representante" })
+                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+    }
+}

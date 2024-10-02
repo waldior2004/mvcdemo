@@ -1,0 +1,38 @@
+﻿@using com.msc.infraestructure.entities;
+@model List<V_Tarifario>
+@{
+    Layout = null;
+    ViewBag.Title = "Historico";
+}
+<table id="datatable-historico" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>    
+            <th>Proveedor</th>
+            <th>Producto</th>                         
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.Id">
+                <td>@item.Proveedor.RazonSocial</td>
+                <td>@item.Producto.Descripcion</td>
+                <td>@item.InicioVigencia.ToString("dd/MM/yyyy")</td>
+                <td>@item.FinVigencia.ToString("dd/MM/yyyy")</td>
+                <td>@item.Moneda.Breve @item.Precio</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#datatable-historico").DataTable({
+            paging: false,
+            sorting: false,
+            language: _language
+        });
+    });
+</script>

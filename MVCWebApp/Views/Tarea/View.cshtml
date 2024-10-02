@@ -1,0 +1,22 @@
+﻿@model com.msc.infraestructure.entities.Tarea
+@{ 
+    Layout = null;
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Titulo, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Titulo</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Descripcion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Descripcion</p>
+        </div>
+    </div>
+}

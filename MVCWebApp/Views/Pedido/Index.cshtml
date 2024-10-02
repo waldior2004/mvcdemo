@@ -1,0 +1,105 @@
+﻿@using com.msc.infraestructure.entities;
+@model List<Pedido>
+@{
+    Layout = null;
+    ViewBag.Title = "Mantenimiento de Pedidos";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>@ViewBag.Title</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="new-item" data-val-url="/Pedido/New">Nuevo</a>
+                                    <a href="#" class="del-group" data-val-url="/Pedido/Delete">Eliminar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Area Solicitante</th>
+                                <th>Centro Costo</th>
+                                <th>Fecha Petición</th>
+                                <th>Usuario Reg.</th>
+                                <th>Estado</th>
+                                <th>Cotizaciones</th>
+                                <th>Orden de Compra</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.Codigo</td>
+                                    <td>@item.AreaSolicitante.Descripcion</td>
+                                    <td>@item.CentroCosto.Descripcion</td>
+                                    <td>@item.FechaPeticion.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.UsuarioSol</td>
+                                    <td>@item.Estado.Descripcion</td>
+                                    <td>
+                                        @foreach (var subitem in item.Cotizaciones)
+                                        { 
+                                            <a href="#" class="view-coti" data-toggle="modal" data-val-id="@subitem.Id" data-val-url="/Cotizacion/View" style="text-decoration: underline; font-weight: bold;">@subitem.Codigo</a> @:&nbsp;&nbsp;
+                                        }
+                                    </td>
+                                    <td>
+                                        @if(item.OrdenCompra != null)
+                                        {
+                                            <a href="#" class="view-oc" data-toggle="modal" data-val-id="@item.OrdenCompra.Id" data-val-url="/OrdenCompra/View" style="text-decoration: underline; font-weight: bold;">@item.OrdenCompra.Codigo</a>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="hidden-xs hidden-sm visible-md visible-lg">
+                                            <a href="#" class="view-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/Pedido/View"><span class="glyphicon glyphicon-list-alt"></span> Ver</a>
+                                        @if (item.Estado.Codigo != "004" && item.Estado.Codigo != "007" && item.Estado.Codigo != "005")
+                                        {
+                                            @:&nbsp;&nbsp;
+                                            <a href="#" class="edit-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/Pedido/Edit"><span class="glyphicon glyphicon-edit"></span> Editar</a>  
+                                        }
+                                        @if (item.Estado.Codigo != "004" && item.Estado.Codigo != "007" && item.Estado.Codigo != "006" && item.Estado.Codigo != "005")
+                                        {
+                                            @:&nbsp;&nbsp;
+                                            <a href="#" class="del-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+                                        }
+                                        </div>
+                                        <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                            <a href="#" class="view-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/Pedido/View"><span class="glyphicon glyphicon-list-alt"></span></a>
+                                        @if (item.Estado.Codigo != "004" && item.Estado.Codigo != "007" && item.Estado.Codigo != "005")
+                                        {
+                                            @:&nbsp;&nbsp;
+                                            <a href="#" class="edit-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/Pedido/Edit"><span class="glyphicon glyphicon-edit"></span></a> 
+                                        }
+                                        @if (item.Estado.Codigo != "004" && item.Estado.Codigo != "007" && item.Estado.Codigo != "006" && item.Estado.Codigo != "005")
+                                        {
+                                            @:&nbsp;&nbsp;
+                                            <a href="#" class="del-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                                        }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                _formLoadExtend("Pedido", [null, null, null, null, null, null, { orderable: false }, { orderable: false }, { orderable: false }]);
+                            });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

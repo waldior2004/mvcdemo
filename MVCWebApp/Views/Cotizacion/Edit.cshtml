@@ -1,0 +1,200 @@
+﻿@model com.msc.infraestructure.entities.Cotizacion
+@{ 
+    Layout = null;
+    using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Cotizacion", FormMethod.Post, new { @class = "form-horizontal", role = "form", id="frmCotizacion" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model.Id == 0)
+        {
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+                @Html.HiddenFor(m => m.Id)
+                <div class="col-md-8 control-label" style="text-align: left;">
+                    <span>@Model.Id</span>
+                </div>
+            </div>
+        }
+        <div class="form-group has-feedback">
+            <div class="col-md-11 col-md-11 col-sm-11 col-lg-11 col-xs-11" title="Código Externo" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Codigo, new { @class = "form-control has-feedback-left", placeholder = "Código Externo", @disabled = "disabled" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.HiddenFor(m => m.IdPedido)
+                @Html.HiddenFor(m => m.IdProveedor)
+                @Html.HiddenFor(m => m.IdEstado)
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Código del Pedido" data-toggle="tooltip" data-placement="right">
+                @if(Model.Estado.Codigo == "002")
+                { 
+                    @Html.TextBox("DescPedido", (Model.Pedido != null ? Model.Pedido.Codigo : ""), new { @class = "form-control has-feedback-left", placeholder = "Código del Pedido" })
+                }
+                else
+                {
+                    @Html.TextBox("DescPedido", (Model.Pedido != null ? Model.Pedido.Codigo : ""), new { @class = "form-control has-feedback-left", placeholder = "Código del Pedido", @disabled = "disabled" })
+                }
+                <span class="fa fa-industry form-control-feedback left" aria-hidden="true"></span>
+                <span class="fa fa-check-circle form-control-feedback right" aria-hidden="true" style='@(Model.Id == 0 ? "" : "color: green;")' ></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Razón Social del Proveedor" data-toggle="tooltip" data-placement="right">
+                @if(Model.Estado.Codigo == "002")
+                {
+                    @Html.TextBox("DescProveedor", (Model.Proveedor != null ? Model.Proveedor.RazonSocial : ""), new { @class = "form-control has-feedback-left", placeholder = "Razon social del Proveedor" })
+                }
+                else
+                {
+                    @Html.TextBox("DescProveedor", (Model.Proveedor != null ? Model.Proveedor.RazonSocial : ""), new { @class = "form-control has-feedback-left", placeholder = "Razon social del Proveedor", @disabled = "disabled" })
+                }
+                <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+                <span class="fa fa-check-circle form-control-feedback right" aria-hidden="true" style='@(Model.Id == 0 ? "" : "color: green;")' ></span>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            showAutocomplete('#DescProveedor', '/AutoComplete/Proveedores', "desc", "#IdProveedor");
+            showAutocomplete('#DescPedido', '/AutoComplete/Pedidos', "desc", "#IdPedido");
+        </script>
+
+        <div class="form-group has-feedback">
+            <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Fecha Cotización" data-toggle="tooltip" data-placement="right">
+                @if(Model.Estado.Codigo == "002")
+                {
+                    @Html.TextBoxFor(m => m.FechaCotizacion, new { @class = "form-control has-feedback-left", placeholder = "Fecha Cotización" })
+                }
+                else
+                { 
+                    @Html.TextBoxFor(m => m.FechaCotizacion, new { @class = "form-control has-feedback-left", placeholder = "Fecha Cotización", @disabled = "disabled" })
+                }
+                
+                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Fecha Entrega" data-toggle="tooltip" data-placement="right">
+                @if(Model.Estado.Codigo == "002")
+                {
+                    @Html.TextBoxFor(m => m.FechaEntrega, new { @class = "form-control has-feedback-left", placeholder = "Fecha Entrega" })
+                }
+                else
+                { 
+                    @Html.TextBoxFor(m => m.FechaEntrega, new { @class = "form-control has-feedback-left", placeholder = "Fecha Entrega", @disabled = "disabled" })
+                }
+                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Observaciones" data-toggle="tooltip" data-placement="right">
+                @if(Model.Estado.Codigo == "002")
+                {
+                    @Html.TextAreaFor(m => m.Observacion, new { @class = "form-control has-feedback-left", placeholder = "Observaciones" })
+                }
+                else
+                { 
+                    @Html.TextAreaFor(m => m.Observacion, new { @class = "form-control has-feedback-left", placeholder = "Observaciones", @disabled = "disabled" })
+                }
+                <span class="fa fa-comment form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-1">
+                <button name="btnGrabar" type="submit" class="btn btn-primary" style="@(Model.Estado.Codigo == "002" ? "" : "display: none;")">Grabar</button>
+            </div>
+        </div>
+    }
+}
+
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Productos</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="aju-group" data-val-url="/Cotizacion/Ajustar">Ajustar Tarifas</a>
+                                <a href="#" class="del-group" data-val-url="/DetalleCotizacion/Delete">Eliminar</a>
+                                <a href="#" class="back-item" data-val-url="/Cotizacion/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="hidden" id="IdProducto" value="0" />
+                        <input type="hidden" id="IdTarifa" value="0" />
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" title="Descripción del Producto" data-toggle="tooltip" data-placement="top">
+                        @Html.TextBox("DescProducto", "", new { @class = "form-control has-feedback-left", placeholder = "Descripción del Producto" })
+                        <span class="fa fa-product-hunt form-control-feedback left" aria-hidden="true"></span>
+                        <span class="fa fa-check-circle form-control-feedback right" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2" title="Unidad de Medida" data-toggle="tooltip" data-placement="top">
+                        <label id="DescUniMedida" style="padding-top: 5px; font-size: medium;"></label>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2" title="Cantidad" data-toggle="tooltip" data-placement="top">
+                        @Html.TextBox("txtCantidad", "", new { @class = "form-control has-feedback-left", placeholder = "Cantidad" })
+                        <span class="fa fa-calculator form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2" title="Precio" data-toggle="tooltip" data-placement="top">
+                        @Html.TextBox("txtPrecio", "0", new { @class = "form-control has-feedback-left", placeholder = "Precio" })
+                        <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 col-lg-1" title="Total" data-toggle="tooltip" data-placement="top">
+                        @Html.TextBox("DescTotal", "0", new { @class = "form-control", placeholder = "Total", @readonly = "readonly", @style="padding-right: 0px;" })
+                    </div>
+                </div>
+                <br /><br /><br />
+                <div class="form-group has-feedback">
+                    <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Observaciones" data-toggle="tooltip" data-placement="right">
+                        @Html.TextArea("DescObservaciones", "", new { @class = "form-control has-feedback-left", placeholder = "Observaciones" })
+                        <span class="fa fa-comment form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1">
+                        <button name="btnAgregar" type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                showAutocompleteProductoxProv('#DescProducto', '/AutoComplete/ProductosxProveedor', "desc", "#IdProducto", "#DescProducto", "#DescUniMedida", "#txtPrecio", "#IdTarifa", "#txtCantidad", "#DescTotal")
+            </script>
+            <br />
+            <div class="x_content">
+                @Html.Partial("~/Views/DetalleCotizacion/View.cshtml", Model.DetalleCotizaciones)
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#FechaCotizacion').daterangepicker($.extend(_optionsCalSingle, { startDate: '@(Model.Id == 0 ? DateTime.Now.ToString("dd/MM/yyyy") : Model.FechaCotizacion.ToString("dd/MM/yyyy"))' }));
+                    @if(Model.FechaEntrega == null)
+                    {
+                        @:$('#FechaEntrega').daterangepicker($.extend(_optionsCalSingle, { startDate:  "@DateTime.Now.ToString("dd/MM/yyyy")" }));
+                    }
+                    else
+                    {
+                        @:$('#FechaEntrega').daterangepicker($.extend(_optionsCalSingle, { startDate: '@(Model.Id == 0 ? DateTime.Now.ToString("dd/MM/yyyy") : Convert.ToDateTime(Model.FechaEntrega).ToString("dd/MM/yyyy"))' }));
+                    }
+                    _formEditCotizacion();
+                });
+            </script>
+        </div>
+    </div>
+</div>

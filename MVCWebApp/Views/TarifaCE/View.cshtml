@@ -1,0 +1,109 @@
+﻿@using com.msc.services.dto
+@model com.msc.infraestructure.entities.TarifaCE
+@{ 
+    Layout = null;
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdTerminal, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Terminal.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdPerTar, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.PerTarifa.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdMoneda, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Moneda.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Importe, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Importe</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FechaInicio, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.FechaInicio.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FechaFin, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.FechaFin.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Comentarios, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Comentarios</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdEstado, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Estado.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Documentos Asociados</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="back-item" data-val-url="/TarifaCE/Index">Volver</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Extensión</th>
+                                <th>Tamaño (MB)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.TarifaCEDocs)
+                            {
+                                <tr>
+                                    <td>@item.Documento.Nombre</td>
+                                    <td>@item.Documento.Extension</td>
+                                    <td>@item.Documento.TamanoMB</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            _formView();
+                            _formBack();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("~/Views/Shared/_Bitacora.cshtml", (List<BitacoraDTO>)ViewBag.lstBitacora)
+
+    </div>
+}

@@ -1,0 +1,132 @@
+﻿@model com.msc.infraestructure.entities.Externo
+@{ 
+    Layout = null;
+    ViewBag.Title = "Edición de Usuarios Externos";
+}
+<div class="row">
+    <div class="col-md-8">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+    @using (Html.BeginForm((Model.Id == 0 ? "New":"Edit"), "Externo", FormMethod.Post, new { @class = "form-horizontal", role = "form", id="frmExterno" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model.Id == 0)
+        {
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+                @Html.HiddenFor(m => m.Id)
+                <div class="col-md-8 control-label" style="text-align: left;">
+                    <span>@Model.Id</span>
+                </div>
+            </div>
+        }
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Terminal Asociado" data-toggle="tooltip" data-placement="right">
+                @Html.DropDownListFor(m => m.IdTerminal, (List<SelectListItem>)ViewBag.lstTerminales, new { @class = "form-control has-feedback-left" })
+                <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Breve Descripción de la Terminal" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.DescTerminal, new { @class = "form-control has-feedback-left", placeholder = "Descripción de Terminal" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Contacto en la empresa" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Contacto, new { @class = "form-control has-feedback-left", placeholder = "Contacto" })
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Ruc en la empresa" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Ruc, new { @class = "form-control has-feedback-left", placeholder = "RUC" })
+                <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Login del Usuario" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control has-feedback-left", placeholder = "Login" })
+                <span class="fa fa-user-secret form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Correo Electrónico Principal" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Email1, new { @class = "form-control has-feedback-left", placeholder = "Correo Electrónico" })
+                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Correo Electrónico Alterno" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Email2, new { @class = "form-control has-feedback-left", placeholder = "Correo Electrónico" })
+                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Teléfono Principal" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Telefono1, new { @class = "form-control has-feedback-left", placeholder = "Teléfono" })
+                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Teléfono Alternativo" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Telefono2, new { @class = "form-control has-feedback-left", placeholder = "Teléfono" })
+                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-1">
+                <button name="btnGrabar" type="submit" class="btn btn-primary">Grabar</button>
+            </div>
+        </div>
+    }
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Perfiles Asociados</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="del-group" data-val-url="/Externo/Delete">Eliminar</a>
+                                <a href="#" class="back-item" data-val-url="/Externo/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="form-group has-feedback">
+                    <div class="col-md-8 col-sm-8 col-lg-8 col-xs-8" title="Perfil a asociar" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlPerfil", (IEnumerable<SelectListItem>)ViewBag.lstPerfiles, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+                        <button name="btnAgregar" type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="x_content">
+                @Html.Partial("~/Views/ExternoPerfil/View.cshtml", Model.ExternoPerfils)
+            </div>
+            <script type="text/javascript">
+                    $(document).ready(function () {
+                            _formEditExterno();
+                            _formBack();
+                        });
+            </script>
+        </div>
+    </div>
+</div>

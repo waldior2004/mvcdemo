@@ -1,0 +1,107 @@
+﻿@model com.msc.infraestructure.entities.Cotizacion
+@{ 
+    Layout = null;
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Codigo, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Codigo</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdPedido, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Pedido.Codigo</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdProveedor, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Proveedor.RazonSocial</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FechaCotizacion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.FechaCotizacion.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FechaEntrega, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@(Model.FechaEntrega == null ? "" : Convert.ToDateTime(Model.FechaEntrega).ToString("dd/MM/yyyy"))</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Observacion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Observacion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdEstado, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Estado.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Productos Asociados</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="back-item" data-val-url="@ViewBag.UrlBack">Volver</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Unidad de Medida</th>
+                                <th>Precio</th>
+                                <th>Total</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DetalleCotizaciones)
+                            {
+                                <tr style="@(item.IdTarifario == null ? "color: Red; font-weight: bold;":"")">
+                                    <td>@item.Producto.Descripcion</td>
+                                    <td>@item.Cantidad</td>
+                                    <td>@item.Producto.UnidadMedida.Descripcion</td>
+                                    <td>@item.Precio</td>
+                                    <td>@item.Total</td>
+                                    <td>@item.Observacion</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <label style="color: red; font-weight: bold;">Nota.- Las filas en rojo muestran productos sin tarifario asociado.</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        _formBack();
+        _formView();
+    });
+</script>
+

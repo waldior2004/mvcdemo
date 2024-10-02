@@ -1,0 +1,53 @@
+﻿@model com.msc.infraestructure.entities.DetalleCotizacion
+@{
+    Layout = null;
+    }
+
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        @Html.LabelFor(m => m.IdProducto, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Producto.Descripcion</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <label class="col-md-4 control-label">Unidad de Medida</label>
+        <div class="col-md-7">
+            <p>@Model.Producto.UnidadMedida.Descripcion</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        @Html.LabelFor(m => m.Cantidad, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Cantidad</p>
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Precio, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Precio</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        @Html.LabelFor(m => m.Total, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Total</p>
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Observacion, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Observacion</p>
+        </div>
+    </div>

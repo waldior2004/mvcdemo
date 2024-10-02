@@ -1,0 +1,46 @@
+﻿@model com.msc.infraestructure.entities.ContactoProveedor
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("Edit", "ContactoProveedor", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmContactoProveedor" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.HiddenFor(m => m.Id)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.HiddenFor(m => m.IdProveedor)
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-12 cols-sm-12 col-xs-12 col-lg-12" title="Cargo" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdCargo, (List<SelectListItem>)ViewBag.lstCargo, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-12 cols-sm-12 col-xs-12 col-lg-12" title="Nombres Completos" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control has-feedback-left", placeholder = "Nombres Completos" })
+            <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-12 cols-sm-12 col-xs-12 col-lg-12" title="Correo" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Correo, new { @class = "form-control has-feedback-left", placeholder = "Correo" })
+            <span class="fa fa-at form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    @*<div class="form-group has-feedback">
+        <div class="col-md-12 cols-sm-12 col-xs-12 col-lg-12" title="Correo" data-toggle="tooltip" data-placement="right">
+            @Html.CheckBoxFor(m => m.IndContacto.Value, new {@class = "form-control has-feedback-left", placeholder = "Número de Cuenta", @checked = "checked" });
+            <span class="fa fa-at form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>*@
+}

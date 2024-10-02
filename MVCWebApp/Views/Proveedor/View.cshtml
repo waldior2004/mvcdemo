@@ -1,0 +1,260 @@
+﻿@using com.msc.services.dto;
+@model com.msc.infraestructure.entities.Proveedor
+@{
+    Layout = null;
+    ViewBag.Title = "Proveedor";
+}
+<div class="row">
+    <div class="col-md-8">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Id, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Id</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.IdTipoPersona, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.TipoPersona.Descripcion</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Ruc, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Ruc</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.RazonSocial, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.RazonSocial</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.NombreComercial, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.NombreComercial</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.ApellidoPaterno, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.ApellidoPaterno</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.ApellidoMaterno, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.ApellidoMaterno</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Nombres, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Nombres</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.DireccionPrincipal, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.DireccionPrincipal</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Telefono, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Telefono</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Email</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.RepresentanteLegal, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.RepresentanteLegal</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.IdGiroNegocio, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.GiroNegocio.Descripcion</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.CodigoSAP, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.CodigoSAP</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.IdTipoNIF, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.TipoNIF.Descripcion</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.IdFormaCobro, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.FormaCobro.Descripcion</p>
+            </div>
+        </div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Datos Bancarios</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="back-item" data-val-url="/Proveedor/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <br />
+            <div class="x_content">
+                <table id="datatable-responsive-dc" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>País</th>
+                            <th>Banco</th>
+                            <th>Tipo de Cuenta</th>
+                            <th>Número de Cuenta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.DatoComercial)
+                        {
+                            <tr id="row_@item.Id">
+                                <td>@item.Pais.Descripcion</td>
+                                <td>@item.Banco.Descripcion</td>
+                                <td>@item.TipoCuenta.Descripcion</td>
+                                <td>@item.NroCuenta</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Contactos Proveedor</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="back-item" data-val-url="/Proveedor/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <br />
+            <div class="x_content">
+                <table id="datatable-responsive-cp" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Cargo</th>
+                            <th>Nombre Completo</th>
+                            <th>Correo</th>
+                            <th>Ind. Contacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ContactoProveedor)
+                        {
+                            <tr id="row_@item.Id">
+                                <td>@item.Cargo.Descripcion</td>
+                                <td>@item.NombreCompleto</td>
+                                <td>@item.Correo</td>
+                                <td>@item.IndContacto</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Impuestos Afectos del Proveedor</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="back-item" data-val-url="/Proveedor/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <br />
+            <div class="x_content">
+                <table id="datatable-responsive-imp" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tipo Impuesto</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Impuestos)
+                        {
+                            <tr id="row_@item.Id">
+                                <td>@item.Impuesto.TipoImpuesto.Descripcion</td>
+                                <td>@item.Impuesto.Descripcion</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        _formBack();
+        $("#datatable-responsive-dc").DataTable({
+            language: _language,
+            paging: false,
+            sorting: false
+        });
+        $("#datatable-responsive-cp").DataTable({
+            language: _language,
+            paging: false,
+            sorting: false
+        });
+        $("#datatable-responsive-imp").DataTable({
+            language: _language,
+            paging: false,
+            sorting: false
+        });
+    });
+</script>

@@ -1,0 +1,56 @@
+﻿@model com.msc.infraestructure.entities.Empresa
+@{ 
+    Layout = null;
+    using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Empresa", FormMethod.Post, new { @class = "form-horizontal", role = "form", id="frmEmpresa" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model.Id == 0)
+        {
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+                @Html.HiddenFor(m => m.Id)
+                <div class="col-md-8 control-label" style="text-align: left;">
+                    <span>@Model.Id</span>
+                </div>
+            </div>
+        }
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Razón Social" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control has-feedback-left", placeholder = "Razón Social" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Ruc" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Ruc, new { @class = "form-control has-feedback-left", placeholder = "Ruc" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Abreviatura" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Abreviatura, new { @class = "form-control has-feedback-left", placeholder = "Abreviatura" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Teléfono" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Telefono, new { @class = "form-control has-feedback-left", placeholder = "Teléfono" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Dirección" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Direccion, new { @class = "form-control has-feedback-left", placeholder = "Dirección" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+    }
+}

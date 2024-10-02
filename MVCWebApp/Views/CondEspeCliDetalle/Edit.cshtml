@@ -1,0 +1,39 @@
+﻿@model com.msc.infraestructure.entities.CondEspeCliDetalle
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("Edit", "CondEspeCliDetalle", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmCondEspeCliDetalle" }))
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.HiddenFor(m => m.Id)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.HiddenFor(m => m.IdCondEspeCli)
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Terminal" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdTerminal, (List<SelectListItem>)ViewBag.lstTerminales, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Retira Por" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdRetiraPor, (List<SelectListItem>)ViewBag.lstTerminales, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Días" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Dias, new { @class = "form-control has-feedback-left", placeholder = "Días" })
+            <span class="fa fa-calculator form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+}

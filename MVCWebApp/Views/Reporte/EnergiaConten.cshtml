@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-10">
+        <h3>REPORTE DE ENERGIA DE CONTENEDORES REEFERS</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 cols-sm-4 col-xs-4 col-lg-4" title="Puerto" data-toggle="tooltip" data-placement="right">
+        @Html.DropDownList("Puerto", (List<SelectListItem>)ViewBag.lstPuerto, new { @class = "form-control has-feedback-left" })
+        <span class="fa fa-industry form-control-feedback left" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-4 cols-sm-4 col-xs-4 col-lg-4" title="Nave" data-toggle="tooltip" data-placement="right">
+        <input type="hidden" id="IdNave" value="0" />
+        @Html.TextBox("DescNave", "", new { @class = "form-control has-feedback-left", placeholder = "Nave" })
+        <span class="fa fa-plane form-control-feedback left" aria-hidden="true"></span>
+        <span class="fa fa-check-circle form-control-feedback right" aria-hidden="true" style=''></span>
+    </div>
+    <div class="col-md-4 cols-sm-4 col-xs-4 col-lg-4" title="Viaje" data-toggle="tooltip" data-placement="right">
+        <select class="form-control has-feedback-left" id="ddlViaje" name="ddlViaje">
+            <option value="0">[Seleccione Viaje]</option>
+        </select>
+        <span class="fa fa-ship form-control-feedback left" aria-hidden="true"></span>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-4 cols-sm-4 col-xs-4 col-lg-4" title="Fecha de Inicio - Fin Aprobación" data-toggle="tooltip" data-placement="right">
+        <input type="hidden" id="FecIniApro" value=""/>
+        <input type="hidden" id="FecFinApro" value="" />
+        <input type="text" id="FechaRangoApro" name="FechaRangoApro" class="form-control has-feedback-left" />
+        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-4 cols-sm-4 col-xs-4 col-lg-4" title="Fecha de Inicio - Fin Zarpe" data-toggle="tooltip" data-placement="right">
+        <input type="hidden" id="FecIniZarpe" value="" />
+        <input type="hidden" id="FecFinZarpe" value="" />
+        <input type="text" id="FechaRangoZarpe" name="FechaRangoZarpe" class="form-control has-feedback-left" />
+        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-1">
+        <button id="btnMostrar" type="button" class="btn btn-primary">Mostrar</button>
+    </div>
+</div>
+<div class="row" id="divReport" style="background-color: white;">
+</div>  
+
+<script>
+    $(function () {
+        _setToolTipsForm();
+
+        $('#btnMostrar').click(function () {
+            var src = _root + '/Reportes/EnergiaConten/EnergiaConten.aspx' + "?IdNave=" + $("#IdNave").val() + "&IdViaje=" + $("#ddlViaje").val() + "&FecIniApro=" + $("#FecIniApro").val() + "&FecFinApro=" + $("#FecFinApro").val() + "&FecIniZarpe=" + $("#FecIniZarpe").val() + "&FecFinZarpe=" + $("#FecFinZarpe").val() + "&IdPuerto=" + $("#Puerto").val();
+            var iframe = '<iframe id="reportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+            $("#divReport").html(iframe);
+        });
+
+        showAutocompleteViaje("#DescNave", "/AutoComplete/Naves", "desc", "#IdNave", "#ddlViaje", "ViajesxNave", "Viaje", "#Puerto");
+        showCascadeViaje();
+
+        $('#FechaRangoApro').daterangepicker($.extend(_optionsCalRange, {
+            autoUpdateInput: false
+        }));
+
+        $('#FechaRangoApro').on('apply.daterangepicker', function (ev, picker) {
+            $("#FecIniApro").val(picker.startDate.format('DD/MM/YYYY'));
+            $("#FecFinApro").val(picker.endDate.format('DD/MM/YYYY'));
+            $('#FechaRangoApro').val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('#FechaRangoZarpe').daterangepicker(_optionsCalRange, {
+            autoUpdateInput: false
+        });
+
+        $('#FechaRangoZarpe').on('apply.daterangepicker', function (ev, picker) {
+            $("#FecIniZarpe").val(picker.startDate.format('DD/MM/YYYY'));
+            $("#FecFinZarpe").val(picker.endDate.format('DD/MM/YYYY'));
+            $('#FechaRangoZarpe').val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+    });
+</script> 

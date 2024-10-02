@@ -1,0 +1,47 @@
+﻿@using com.msc.services.dto
+@model List<BitacoraDTO>
+@{
+    Layout = null;
+}
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Bitácora</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table id="datatable-bitacora" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Acción</th>
+                        <th>Detalle</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FecRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@item.User</td>
+                            <td>@item.Accion</td>
+                            <td>@item.Detalle</td>
+                            <td>@item.Tipo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#datatable-bitacora").DataTable({
+                        paging: false,
+                        sorting: false,
+                        language: _language
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>

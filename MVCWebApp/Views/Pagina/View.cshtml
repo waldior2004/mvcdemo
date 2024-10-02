@@ -1,0 +1,46 @@
+﻿@model com.msc.infraestructure.entities.Pagina
+@{ 
+    Layout = null;
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Descripcion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Titulo, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Titulo</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Url, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Url</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Orden, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Orden</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdPagina, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            @if (Model.PaginaPadre == null)
+            {
+                <p>[No Establecido]</p>
+            }
+            else {
+                <p>@Model.PaginaPadre.Titulo</p>
+            }
+        </div>
+    </div>
+}

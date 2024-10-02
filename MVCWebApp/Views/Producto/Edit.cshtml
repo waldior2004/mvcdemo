@@ -1,0 +1,79 @@
+﻿@using com.msc.services.dto;
+@model com.msc.infraestructure.entities.Producto
+@{ 
+    Layout = null;
+}
+
+@using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Producto", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmProducto" }))
+{
+    @Html.AntiForgeryToken()
+    if (Model.Id == 0)
+    {
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.HiddenFor(m => m.Id)
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+            @Html.HiddenFor(m => m.Id)
+            <div class="col-md-4 control-label" style="text-align: left;">
+                <span>@Model.Id</span>
+            </div>
+        </div>
+    }
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Familia de Productos" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdCodigoFamilia, (List<SelectListItem>)ViewBag.lstFamilias, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Sub Familia de productos" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdCodigoSubFamilia, (List<SelectListItem>)ViewBag.lstSubFamilias, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Grupo de Productos" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdCodigoGrupo, (List<SelectListItem>)ViewBag.lstGrupoProd, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Tipo de Producto" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdTipoServicio, (List<SelectListItem>)ViewBag.lstTipoProducto, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Unidad de Medida" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdUnidadMedida, (List<SelectListItem>)ViewBag.lstUniMedidas, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Descripción del Producto" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control has-feedback-left", placeholder = "Descripción Producto" })
+            <span class="fa fa-product-hunt form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Abreviatura del Producto" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Abreviatura, new { @class = "form-control has-feedback-left", placeholder = "Abreviatura Producto" })
+            <span class="fa fa-product-hunt form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" title="Observaciones" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Observaciones, new { @class = "form-control has-feedback-left", placeholder = "Observaciones Producto" })
+            <span class="fa fa-comment form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        showCascade("#IdCodigoFamilia", "SubFamiliasxFamilia", "#IdCodigoSubFamilia", "SubFamilia");
+    </script>
+}

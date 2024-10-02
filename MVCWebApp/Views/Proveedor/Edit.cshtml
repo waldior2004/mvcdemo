@@ -1,0 +1,335 @@
+﻿@using com.msc.services.dto;
+@model com.msc.infraestructure.entities.Proveedor
+@{
+    Layout = null;
+    ViewBag.Title = "Edición de Proveedores";
+}
+<div class="row">
+    <div class="col-md-8">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+@using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Proveedor", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmProveedor" }))
+{
+    @Html.AntiForgeryToken()
+    if (Model.Id == 0)
+    {
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.HiddenFor(m => m.Id)
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+            @Html.HiddenFor(m => m.Id)
+            <div class="col-md-4 control-label" style="text-align: left;">
+                <span>@Model.Id</span>
+            </div>
+        </div>
+    }
+    <div class="form-group has-feedback">
+        <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Tipo de Persona" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdTipoPersona, (List<SelectListItem>)ViewBag.lstTipoPersona, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6" title="Tipo Identificación" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdTipoNIF, (List<SelectListItem>)ViewBag.lstNIF, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" title="Número de Ruc/DNI/Carnet" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Ruc, new { @class = "form-control has-feedback-left", placeholder = "Número de Ruc/DNI/Carnet" })
+            <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6" title="Nombre de Razón Social" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.RazonSocial, new { @class = "form-control has-feedback-left", placeholder = "Nombre de Razón Social" })
+            <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" title="Nombre Comercial" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.NombreComercial, new { @class = "form-control has-feedback-left", placeholder = "Nombre Comercial" })
+            <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Nombres" data-toggle="tooltip" data-placement="right">
+            @if (Model.TipoPersona.Codigo == "PN") 
+            { 
+                @Html.TextBoxFor(m => m.Nombres, new { @class = "form-control has-feedback-left", placeholder = "Nombres" })
+            }
+            else
+            { 
+                @Html.TextBoxFor(m => m.Nombres, new { @class = "form-control has-feedback-left", placeholder = "Nombres", @readonly = "readonly" })
+            }
+            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    
+    <div class="form-group has-feedback">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6" title="Apellido Paterno" data-toggle="tooltip" data-placement="right">
+            @if (Model.TipoPersona.Codigo == "PN") 
+            { 
+                @Html.TextBoxFor(m => m.ApellidoPaterno, new { @class = "form-control has-feedback-left", placeholder = "Apellido Paterno" })
+            }
+            else
+            { 
+                @Html.TextBoxFor(m => m.ApellidoPaterno, new { @class = "form-control has-feedback-left", placeholder = "Apellido Paterno", @readonly = "readonly" })
+            }
+            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" title="Apellido Materno" data-toggle="tooltip" data-placement="right">
+            @if (Model.TipoPersona.Codigo == "PN")
+            {
+                @Html.TextBoxFor(m => m.ApellidoMaterno, new { @class = "form-control has-feedback-left", placeholder = "Apellido Materno" })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.ApellidoMaterno, new { @class = "form-control has-feedback-left", placeholder = "Apellido Materno", @readonly = "readonly" })
+            }
+            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>    
+
+    <div class="form-group has-feedback">
+        <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3" title="País" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdPais, (List<SelectListItem>)ViewBag.lstPaises, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8" title="Dirección Principal" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.DireccionPrincipal, new { @class = "form-control has-feedback-left", placeholder = "Dirección Principal" })
+            <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3" title="Departamento" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdDepartamento, (List<SelectListItem>)ViewBag.lstDeps, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4" title="Provincia" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdProvincia, (List<SelectListItem>)ViewBag.lstProvs, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4" title="Distrito" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdDistrito, (List<SelectListItem>)ViewBag.lstDists, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    
+    <div class="form-group has-feedback">
+        <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3" title="Número de Teléfono" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Telefono, new { @class = "form-control has-feedback-left", placeholder = "Número de Teléfono" })
+            <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4" title="Cuenta de Correo" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", placeholder = "Cuenta de Correo" })
+            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4" title="Código SAP" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.CodigoSAP, new { @class = "form-control has-feedback-left", placeholder = "Código SAP" })
+            <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Representante Legal" data-toggle="tooltip" data-placement="right">
+            @Html.TextBoxFor(m => m.RepresentanteLegal, new { @class = "form-control has-feedback-left", placeholder = "Representante Legal" })
+            <span class="fa fa-group form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6" title="Giro de Negocio" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdGiroNegocio, (List<SelectListItem>)ViewBag.lstGiroNegocio, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+
+        <div class="col-md-5 col-sm-5 col-xs-5 col-lg-5" title="Condición de Pago" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdFormaCobro, (List<SelectListItem>)ViewBag.lstFormaCobro, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+    </div>
+    
+    <div class="form-group has-feedback">
+        <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Tipo de Contribuyente" data-toggle="tooltip" data-placement="right">
+            @Html.DropDownListFor(m => m.IdTipoContribuyente, (List<SelectListItem>)ViewBag.lstTipoContribu, new { @class = "form-control has-feedback-left" })
+            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1 col-lg-1">
+            <button name="btnGrabar" type="submit" class="btn btn-primary">Grabar</button>
+        </div>
+    </div>
+
+}
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Datos Bancarios</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="del-group" data-val-url="/DatoComercial/Delete">Eliminar</a>
+                                <a href="#" class="back-item" data-val-url="/Proveedor/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="form-group has-feedback">
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="País" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlPais", (IEnumerable<SelectListItem>)ViewBag.lstPaises2, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-flag form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="Banco" data-toggle="tooltip" data-placement="right">
+                        <select class="form-control has-feedback-left" id="ddlBanco" name="ddlBanco">
+                            <option value="0">[Seleccione Banco]</option>
+                        </select>
+                        <span class="fa fa-bank form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="Tipo de Cuenta" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlTipoCuenta", (IEnumerable<SelectListItem>)ViewBag.lstTipoCuenta, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group has-feedback">
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="Tipo Banco Interlocutor" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlTipoInterlocutor", (IEnumerable<SelectListItem>)ViewBag.lstTipoInterlocutor, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2" title="Número de Cuenta" data-toggle="tooltip" data-placement="right">
+                        @Html.TextBox("NumCuenta", "", new { @class = "form-control has-feedback-left", placeholder = "Número de Cuenta" })
+                        <span class="fa fa-archive form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2" title="Número de CCI" data-toggle="tooltip" data-placement="right">
+                        @Html.TextBox("NumCCI", "", new { @class = "form-control has-feedback-left", placeholder = "Número de CCI" })
+                        <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2" title="SWIFT" data-toggle="tooltip" data-placement="right">
+                        @Html.TextBox("NumSwift", "", new { @class = "form-control has-feedback-left", placeholder = "SWIFT" })
+                        <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                        <button name="btnAgregar" type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </div>
+                <br />
+                <div class="x_content">
+                    @Html.Partial("~/Views/DatoComercial/View.cshtml", Model.DatoComercial)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Contactos del Proveedor</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="del-group" data-val-url="/ContactoProveedor/Delete">Eliminar</a>
+                                <a href="#" class="back-item" data-val-url="/Proveedor/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="form-group has-feedback">
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3" title="Cargo" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlCargo", (IEnumerable<SelectListItem>)ViewBag.lstCargo, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="Nombres Completos" data-toggle="tooltip" data-placement="right">
+                        @Html.TextBox("NombreCompleto", "", new { @class = "form-control has-feedback-left", placeholder = "Nombres Completos" })
+                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3" title="Correo" data-toggle="tooltip" data-placement="right">
+                        @Html.TextBox("CorreoCont", "", new { @class = "form-control has-feedback-left", placeholder = "Correo" })
+                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1" title="Indicador de Contacto" data-toggle="tooltip" data-placement="right">
+                        @Html.CheckBox("IndicadorCont", new { @class = "form-control has-feedback-left", placeholder = "Indicador de Contacto" })
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1">
+                        <button name="btnAgregarCont" type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </div>
+                <br />
+                <div class="x_content2">
+                    @Html.Partial("~/Views/ContactoProveedor/View.cshtml", Model.ContactoProveedor)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Impuestos Afectos del Proveedor</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="del-group" data-val-url="/ImpuestoProveedor/Delete">Eliminar</a>
+                                <a href="#" class="back-item" data-val-url="/Proveedor/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="form-group has-feedback">
+                    <div class="col-md-5 col-sm-5 col-lg-5 col-xs-5" title="Tipo de Impuesto" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlTipoImpuesto", (IEnumerable<SelectListItem>)ViewBag.lstClaseImpuesto, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6" title="Impuesto" data-toggle="tooltip" data-placement="right">
+                        <select class="form-control has-feedback-left" id="ddlImpuesto" name="ddlImpuesto">
+                            <option value="0">[Seleccione Impuesto]</option>
+                        </select>
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1">
+                        <button name="btnAgregarImp" type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </div>
+                <br />
+                <div class="x_content3">
+                    @Html.Partial("~/Views/ImpuestoProveedor/View.cshtml", Model.Impuestos)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        _formEditProveedor();
+    });
+</script>

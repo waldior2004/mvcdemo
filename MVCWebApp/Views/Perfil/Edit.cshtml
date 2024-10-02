@@ -1,0 +1,93 @@
+﻿@model com.msc.infraestructure.entities.Perfil
+@{
+    Layout = null;
+    ViewBag.Title = "Edición de Perfil";
+}
+    <div class="row">
+        <div class="col-md-8">
+            <h3>@ViewBag.Title</h3>
+        </div>
+    </div>
+    @using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Perfil", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmPerfil" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model.Id == 0)
+        {
+            <div class="row form-group">
+                <div class="col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+                @Html.HiddenFor(m => m.Id)
+                <div class="col-md-8 control-label" style="text-align: left;">
+                    <span>@Model.Id</span>
+                </div>
+            </div>
+        }
+        <div class="form-group has-feedback">
+            <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11" title="Breve Descripción" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control has-feedback-left", placeholder = "Descripción" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-1 col-lg-1">
+                <button name="btnGrabar" type="submit" class="btn btn-primary">Grabar</button>
+            </div>
+        </div>
+    }
+<br/>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Controles Asociados</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="ina-group" data-val-url="/Perfil/Edit">Inactivar</a>
+                                    <a href="#" class="act-group" data-val-url="/Perfil/Edit">Activar</a>
+                                    <a href="#" class="del-group" data-val-url="/Perfil/Delete">Eliminar</a>
+                                    <a href="#" class="back-item" data-val-url="/Perfil/Index">Volver</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group has-feedback">
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="Página que contiene los controles" data-toggle="tooltip" data-placement="right">
+                            @Html.DropDownList("ddlPagina", (IEnumerable<SelectListItem>)ViewBag.lstPaginas, new { @class = "form-control has-feedback-left" })
+                            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" title="Control de Página" data-toggle="tooltip" data-placement="right">
+                            <select class="form-control has-feedback-left" id="ddlControl" name="ddlControl">
+                                <option value="0">[Seleccione Control]</option>
+                            </select>
+                            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+                            <button name="btnAgregar" type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="x_content">
+                    @Html.Partial("~/Views/PerfilControl/View.cshtml", Model.PerfilControls)
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                            _formEditPerfil();
+                            _formBack();
+                        });
+                </script>
+            </div>
+        </div>
+    </div>
+

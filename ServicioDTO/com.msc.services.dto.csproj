@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C2ECD5B-8478-4D09-BE28-AB1D5F182E2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.msc.services.dto</RootNamespace>
+    <AssemblyName>com.msc.services.dto</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapper.cs" />
+    <Compile Include="DataMapping\AreaSolicitante.cs" />
+    <Compile Include="DataMapping\Tarea.cs" />
+    <Compile Include="DataMapping\Banco.cs" />
+    <Compile Include="DataMapping\Bitacora.cs" />
+    <Compile Include="DataMapping\CargaLiqui.cs" />
+    <Compile Include="DataMapping\CargaLiquiC.cs" />
+    <Compile Include="DataMapping\CentroCosto.cs" />
+    <Compile Include="DataMapping\Cliente.cs" />
+    <Compile Include="DataMapping\CondEspeCli.cs" />
+    <Compile Include="DataMapping\CondEspeCliDetalle.cs" />
+    <Compile Include="DataMapping\CondEspeCliDia.cs" />
+    <Compile Include="DataMapping\CondEspeCliDoc.cs" />
+    <Compile Include="DataMapping\ContactoProveedor.cs" />
+    <Compile Include="DataMapping\Control.cs" />
+    <Compile Include="DataMapping\Cotizacion.cs" />
+    <Compile Include="DataMapping\DatoComercial.cs" />
+    <Compile Include="DataMapping\DetalleCotizacion.cs" />
+    <Compile Include="DataMapping\DetalleOrdenCompra.cs" />
+    <Compile Include="DataMapping\DetallePedido.cs" />
+    <Compile Include="DataMapping\Documento.cs" />
+    <Compile Include="DataMapping\Empresa.cs" />
+    <Compile Include="DataMapping\Externo.cs" />
+    <Compile Include="DataMapping\ExternoPerfil.cs" />
+    <Compile Include="DataMapping\Familia.cs" />
+    <Compile Include="DataMapping\GrupoTabla.cs" />
+    <Compile Include="DataMapping\Impuesto.cs" />
+    <Compile Include="DataMapping\ImpuestoProveedor.cs" />
+    <Compile Include="DataMapping\Login.cs" />
+    <Compile Include="DataMapping\Nave.cs" />
+    <Compile Include="DataMapping\OrdenCompra.cs" />
+    <Compile Include="DataMapping\OrdenCompraDoc.cs" />
+    <Compile Include="DataMapping\Pagina.cs" />
+    <Compile Include="DataMapping\Pedido.cs" />
+    <Compile Include="DataMapping\Perfil.cs" />
+    <Compile Include="DataMapping\PerfilControl.cs" />
+    <Compile Include="DataMapping\Producto.cs" />
+    <Compile Include="DataMapping\Proveedor.cs" />
+    <Compile Include="DataMapping\Provision.cs" />
+    <Compile Include="DataMapping\Puerto.cs" />
+    <Compile Include="DataMapping\Respuesta.cs" />
+    <Compile Include="DataMapping\Rol.cs" />
+    <Compile Include="DataMapping\SubFamilia.cs" />
+    <Compile Include="DataMapping\Sucursal.cs" />
+    <Compile Include="DataMapping\Tabla.cs" />
+    <Compile Include="DataMapping\TarifaCE.cs" />
+    <Compile Include="DataMapping\TarifaCEDoc.cs" />
+    <Compile Include="DataMapping\Tarifario.cs" />
+    <Compile Include="DataMapping\TarifarioDoc.cs" />
+    <Compile Include="DataMapping\TipoControl.cs" />
+    <Compile Include="DataMapping\Ubigeo.cs" />
+    <Compile Include="DataMapping\Usuario.cs" />
+    <Compile Include="DataMapping\UsuarioPerfil.cs" />
+    <Compile Include="DataMapping\Viaje.cs" />
+    <Compile Include="Sistema\Tarea.cs" />
+    <Compile Include="Sistema\Bitacora.cs" />
+    <Compile Include="Sistema\Empresa.cs" />
+    <Compile Include="Sistema\ImpuestoProveedor.cs" />
+    <Compile Include="Sistema\OrdenCompraDoc.cs" />
+    <Compile Include="Sistema\DetalleOrdenCompra.cs" />
+    <Compile Include="Sistema\OrdenCompra.cs" />
+    <Compile Include="Sistema\DetalleCotizacion.cs" />
+    <Compile Include="Sistema\Cotizacion.cs" />
+    <Compile Include="Sistema\CargaLiqui.cs" />
+    <Compile Include="Sistema\CargaLiquiD.cs" />
+    <Compile Include="Sistema\Booking.cs" />
+    <Compile Include="Sistema\ContactoProveedor.cs" />
+    <Compile Include="Sistema\DatoComercial.cs" />
+    <Compile Include="Sistema\DetallePedido.cs" />
+    <Compile Include="Sistema\Familia.cs" />
+    <Compile Include="Sistema\Producto.cs" />
+    <Compile Include="Sistema\Proveedor.cs" />
+    <Compile Include="Sistema\SubFamilia.cs" />
+    <Compile Include="Sistema\AreaSolicitante.cs" />
+    <Compile Include="Sistema\CentroCosto.cs" />
+    <Compile Include="Sistema\Sucursal.cs" />
+    <Compile Include="Sistema\Pedido.cs" />
+    <Compile Include="Sistema\Impuesto.cs" />
+    <Compile Include="Sistema\Banco.cs" />
+    <Compile Include="Sistema\Provision.cs" />
+    <Compile Include="Sistema\Ubigeo.cs" />
+    <Compile Include="Sistema\Tarifario.cs" />
+    <Compile Include="Sistema\TarifarioDoc.cs" />
+    <Compile Include="Sistema\Puerto.cs" />
+    <Compile Include="Sistema\Viaje.cs" />
+    <Compile Include="Sistema\Nave.cs" />
+    <Compile Include="Sistema\Contenedor.cs" />
+    <Compile Include="Sistema\Cliente.cs" />
+    <Compile Include="Sistema\CondEspeCliDetalle.cs" />
+    <Compile Include="Sistema\CondEspeCli.cs" />
+    <Compile Include="Sistema\CondEspeCliDia.cs" />
+    <Compile Include="Sistema\Documento.cs" />
+    <Compile Include="Sistema\CargaLiquiC.cs" />
+    <Compile Include="Seguridad\Login.cs" />
+    <Compile Include="Sistema\GrupoTabla.cs" />
+    <Compile Include="Sistema\Tabla.cs" />
+    <Compile Include="Sistema\Externo.cs" />
+    <Compile Include="Seguridad\ExternoPerfil.cs" />
+    <Compile Include="Sistema\TarifaCE.cs" />
+    <Compile Include="Sistema\CondEspeCliDoc.cs" />
+    <Compile Include="Sistema\TarifaCEDoc.cs" />
+    <Compile Include="Sistema\UsuarioPerfil.cs" />
+    <Compile Include="Seguridad\PerfilControl.cs" />
+    <Compile Include="Seguridad\Perfil.cs" />
+    <Compile Include="Respuesta.cs" />
+    <Compile Include="Seguridad\Pagina.cs" />
+    <Compile Include="Seguridad\Control.cs" />
+    <Compile Include="Seguridad\TipoControl.cs" />
+    <Compile Include="Seguridad\Rol.cs" />
+    <Compile Include="Sistema\Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistema\V_Tarifario.cs" />
+    <Compile Include="Sistema\TempoPedido.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\com.msc.infraestructure.entities.csproj">
+      <Project>{ec6db5f8-6f13-49c1-bb70-0e396e7394ef}</Project>
+      <Name>com.msc.infraestructure.entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

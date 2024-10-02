@@ -1,0 +1,176 @@
+﻿@using com.msc.services.dto;
+@model com.msc.infraestructure.entities.CondEspeCli
+@{
+    Layout = null;
+    ViewBag.Title = "Condicion Especial";
+}
+<div class="row">
+    <div class="col-md-8">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Id, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Id</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.IdTipoCond, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.TipoCond.Descripcion</p>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-md-4 control-label">@ViewBag.LabelRef</label>
+            <div class="col-md-7">
+                <p>@Model.DescReferencia</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Nombre, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Nombre</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.FechaInicio, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.FechaInicio.ToString("dd/MM/yyyy")</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.FechaFin, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.FechaFin.ToString("dd/MM/yyyy")</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.FechaAprobacion, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.FechaAprobacion.ToString("dd/MM/yyyy")</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.UsuAprobacion, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.UsuAprobacion</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.DiasLibres, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.DiasLibres</p>
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Descripcion, new { @class = "col-md-4 control-label" })
+            <div class="col-md-7">
+                <p>@Model.Descripcion</p>
+            </div>
+        </div>
+
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Detalle de Terminales</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="back-item" data-val-url="/CondEspeCli/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <br />
+            <div class="x_content">
+                <table id="datatable-detalle" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Terminal</th>
+                            <th>Retira Por</th>
+                            <th>Dias</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CondEspeCliDetalles)
+                        {
+                            <tr id="row_@item.Id">
+                                <td>@item.Terminal.Descripcion</td>
+                                <td>@item.RetiraPor.Descripcion</td>
+                                <td>@item.Dias</td>
+                                <td>
+                                    <div class="hidden-xs hidden-sm visible-md visible-lg">
+                                        <a href="#" class="asig-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/CondEspeCliDia/Detail"><span class="glyphicon glyphicon-plane"></span> Transporte</a>
+                                    </div>
+                                    <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                        <a href="#" class="asig-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/CondEspeCliDia/Detail"><span class="glyphicon glyphicon-plane"></span></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Documentos Asociados</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" class="back-item" data-val-url="/CondEspeCli/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <br />
+            <div class="x_content2">
+                <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Extensión</th>
+                            <th>Tamaño (MB)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CondEspeCliDocs)
+                        {
+                            <tr>
+                                <td>@item.Documento.Nombre</td>
+                                <td>@item.Documento.Extension</td>
+                                <td>@item.Documento.TamanoMB</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        _formViewTabDetail();
+                        _formBack();
+                        _formView();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/_Bitacora.cshtml", (List<BitacoraDTO>)ViewBag.lstBitacora)
+</div>
+

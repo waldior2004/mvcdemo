@@ -1,0 +1,86 @@
+﻿@using com.msc.infraestructure.entities;
+@model List<OrdenCompra>
+@{
+    Layout = null;
+    ViewBag.Title = "Validar Solicitud de Orden de Compra";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>@ViewBag.Title</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Cotización</th>
+                                <th>Proveedor</th>
+                                <th>FechaRegistro</th>
+                                <th>Estado</th>
+                                <th>Comentario</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.Codigo</td>
+                                    <td>@item.Cotizacion.Codigo</td>
+                                    <td>@item.Proveedor.RazonSocial</td>
+                                    <td>@item.FechaRegistro.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.Estado.Descripcion</td>
+                                    <td>
+                                        @if (item.Estado.Codigo == "003")
+                                        {
+                                            <input type="text" class="form-control" placeholder="Ingrese Comentario" value="@item.ComentAprobador" />
+                                        }
+                                        else
+                                        {
+                                            @item.ComentAprobador
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="hidden-xs hidden-sm visible-md visible-lg">
+                                            <a href="#" class="view-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/OrdenCompra/View"><span class="glyphicon glyphicon-list-alt"></span> Ver</a> 
+                                            @if (item.Estado.Codigo == "003")
+                                            {
+                                                @:&nbsp; &nbsp;
+                                                <a href="#" class="apro-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-check"></span> Aprobar</a>
+                                                @:&nbsp; &nbsp;
+                                                <a href="#" class="rech-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-remove"></span> Rechazar</a>
+                                                @:&nbsp; &nbsp;
+                                                <a href="#" class="obs-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-eye-open"></span> Observar</a>
+                                            }
+                                        </div>
+                                        <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                            <a href="#" class="view-item" data-toggle="modal" data-val-id="@item.Id" data-val-url="/OrdenCompra/View"><span class="glyphicon glyphicon-list-alt"></span></a> 
+                                            @if (item.Estado.Codigo == "003")
+                                            {
+                                                @:&nbsp; &nbsp;
+                                                <a href="#" class="apro-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-check"></span></a>
+                                                @:&nbsp; &nbsp;
+                                                <a href="#" class="rech-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-remove"></span></a>
+                                                @:&nbsp; &nbsp;
+                                                <a href="#" class="obs-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            _formValidaOrdenCompra();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

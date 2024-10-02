@@ -1,0 +1,263 @@
+﻿@using com.msc.infraestructure.entities;
+@model com.msc.infraestructure.entities.Pedido
+@{
+    Layout = null;
+
+    var idCProd = 0;
+
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            @Html.HiddenFor(m => m.Id)
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Codigo, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.Codigo</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdEmpresa, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.Empresa.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdSucursal, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.Sucursal.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdAreaSolicitante, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.AreaSolicitante.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdTipoPeticion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.TipoPeticion.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdCentroCosto, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.CentroCosto.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FechaPeticion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.FechaPeticion.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FechaEsperada, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.FechaEsperada.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Observaciones, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.Observaciones</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.UsuarioSol, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.UsuarioSol</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.FlagAprobacion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@(Model.FlagAprobacion == 1 ? "SI" : "NO")</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.ComentAprobador, new { @class = "col-md-3 control-label" })
+        <div class="col-md-3">
+            <p>@Model.ComentAprobador</p>
+        </div>
+    </div>
+}
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Cuadro Comparativo x Producto</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @*@if (!(bool)ViewBag.ExistCero)
+                                { 
+                                   <a href="#" class="oc-item" data-val-url="/GenCotiza/GenerarOC" data-val-id="@((ViewBag.BestCot as Cotizacion).Id)">Generar O/C</a>
+                                }*@
+                                <a href="#" class="back-item" data-val-url="/GenCotiza/Index">Volver</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content2">
+                <div class="row">
+                    <div class="col-md-8 cols-sm-8 col-xs-8 col-lg-8">
+                        <label>Mejor Precio: @((ViewBag.BestCot as Cotizacion).Proveedor.RazonSocial) (USD @ViewBag.BestPrice)</label>
+                    </div>
+                    <div class="col-md-4 cols-sm-4 col-xs-4 col-lg-4" title="Producto" data-toggle="tooltip" data-placement="right">
+                        @Html.DropDownList("ddlProducto", (List<SelectListItem>)ViewBag.lstProducto, new { @class = "form-control has-feedback-left" })
+                        <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="container">
+                        <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                        <canvas id="canvas" width="1000" height="250" style="width: 100%; height: 250px; background-color: white; padding-top: 20px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Cuadro Comparativo General</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                    @foreach (var item in Model.Cotizaciones)
+                    {
+                        var idCorr = 0;
+                        <div class="panel">
+                            <a class="panel-heading" role="tab" id="heading@(item.Id)" data-toggle="collapse" data-parent="#accordion" href="#collapse@(item.Id)" aria-expanded="false" aria-controls="collapse@(item.Id)">
+                                <h4 class="panel-title">@item.Proveedor.Ruc - @item.Proveedor.RazonSocial &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(USD @item.DetalleCotizaciones.Sum(p => p.Total))</h4>
+                            </a>
+                            <div id="collapse@(item.Id)" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading@(item.Id)">
+                                <div class="panel-body" style="text-align: right;">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr style="background-color: #FECB00; color: black;">
+                                                <th></th>
+                                                <th>Producto</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var subitem in item.DetalleCotizaciones)
+                                            {
+                                                idCorr++;
+                                                <tr>
+                                                    <td>@idCorr</td>
+                                                    <td>@subitem.Producto.Descripcion</td>
+                                                    <td>@subitem.Cantidad</td>
+                                                    <td>USD @subitem.Precio</td>
+                                                    <td>USD @subitem.Total</td>
+                                                </tr>
+                                            }
+                                            <tr><td colspan="4"></td><td style="font-weight: bold;">USD @(item.DetalleCotizaciones.Sum(p=>p.Total))</td></tr>
+                                        </tbody>
+                                    </table>
+                                    @if (!item.DetalleCotizaciones.Exists(p => p.Total == 0))
+                                    {
+                                        <a href="#" style="color: Black; text-decoration: underline; font-weight: bold;" class="oc-item" data-val-url="/GenCotiza/GenerarOC" data-val-id="@(item.Id)">Generar O/C</a>
+                                    }
+                                    else
+                                    {
+                                        <label style="color: Red;">La cotización tiene ítems en cero, no podrá generar la O/C hasta que complete los importes faltantes.</label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var _proveedores = [];
+    var _data = [[]];
+    _data[0] = [];
+
+    @foreach (var item in Model.Cotizaciones)
+    {
+        @:_proveedores.push('@item.Proveedor.RazonSocial');
+        @:_data[0].push('@item.DetalleCotizaciones.Sum(p => p.Total)');
+    }
+
+    @foreach (var item in (List<Producto>)ViewBag.lstProd)
+    {
+        idCProd++;
+        @:_data[@(idCProd)] = [];
+        foreach (var subitem in Model.Cotizaciones)
+        {
+            @:_data[@(idCProd)].push(@subitem.DetalleCotizaciones.Where(p => p.Producto.Id == item.Id).Select(q => q.Total).First());
+        }
+    }
+
+    var horizontalBarChartData = {
+        labels: _proveedores,
+        datasets: [{
+            label: 'Total',
+            backgroundColor: "rgba(254,203,0,0.5)",
+            data: _data[0]
+        }]
+    };
+
+    $(document).ready(function () {
+        _formBack();
+
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myHorizontalBar = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: horizontalBarChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#FECB00',
+                        borderSkipped: 'left'
+                    }
+                },
+                responsive: true,
+                legend: false
+            }
+        });
+
+        $('#ddlProducto').on('change', function() {
+            var idData = $(this).val();
+            horizontalBarChartData.datasets[0].data = _data[idData];
+            window.myHorizontalBar.update();
+        });
+
+        _formActionCustom(".oc-item", "/GenCotiza/GenerarOC", "/GenCotiza/Index");
+
+    });
+</script>
+
+<style type="text/css">
+    a:focus, a:hover {
+        color: White;
+        text-decoration: none;
+    }
+
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+</style>

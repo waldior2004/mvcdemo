@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="" role="tabpanel">
+                <ul id="myTabsHead" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab_content1" id="cliente-tabb" role="tab" data-toggle="tab" aria-expanded="true">Por Cliente</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_content2" role="tab" id="tipoc-tabb" data-toggle="tab" aria-expanded="false">Por Tipo de Carga</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_content3" role="tab" id="excep-tabb" data-toggle="tab" aria-expanded="false">Excepcionales</a>
+                    </li>
+                </ul>
+                <div id="myTabsBody" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="cliente-tabb">
+                        @Html.Partial("~/Views/CondEspeCli/Cliente.cshtml", (List<com.msc.infraestructure.entities.CondEspeCli>)ViewBag.lstCondClientes)
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="tipoc-tabb">
+                        @Html.Partial("~/Views/CondEspeCli/TipoCarga.cshtml", (List<com.msc.infraestructure.entities.CondEspeCli>)ViewBag.lstCondTipoC)
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="excep-tabb">
+                        @Html.Partial("~/Views/CondEspeCli/Excepcional.cshtml", (List<com.msc.infraestructure.entities.CondEspeCli>)ViewBag.lstExcepcional)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cliente-tabb, #tipoc-tabb, #excep-tabb").unbind().bind("click", function (evt) {
+            evt.preventDefault();
+            selected = [];
+            $('tbody tr').each(function (index) {
+                $(this).removeClass('selected');
+            });
+        });
+    });
+</script>
