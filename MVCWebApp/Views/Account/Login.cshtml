@@ -1,0 +1,44 @@
+﻿@using com.msc.infraestructure.entities.mvc
+@model Login
+@{
+    Layout = "~/Views/Shared/_LayoutLogOff.cshtml";
+}
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal form-label-left", role = "form", id = "frmLogin" }))
+        {
+            @Html.AntiForgeryToken()
+            <h1>Iniciar Sesión</h1>
+            <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6" >
+                <img src="~/Content/images/LogoMSCNegro.png" style="width: 200px; padding-top: 10%;" />
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 form-group" style="padding-bottom: 10px;">
+                @Html.CheckBoxFor(m => m.UserExternal)
+                @Html.DisplayNameFor(m => m.UserExternal)
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 form-group has-feedback">
+                @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control has-feedback-left", placeholder = "Usuario" })
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 form-group has-feedback">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control has-feedback-left", placeholder = "Contraseña" })
+                <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div>
+                <a class="btn btn-default submit" href="#">Ingresar</a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                    <p>©2018 Todos los derechos reservados. Mediterranean Shipping Company del Perú S.A.C.</p>
+                </div>
+            </div>
+        }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        _formSubmitLogin();
+    });
+</script>

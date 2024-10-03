@@ -1,0 +1,113 @@
+﻿@model com.msc.infraestructure.entities.Externo
+@{ 
+    Layout = null;
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.DescTerminal, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.DescTerminal</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Contacto, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Contacto</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Ruc, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Ruc</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Usuario, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Usuario</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Clave, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Clave</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Email1, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Email1</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Email2, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Email2</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Telefono1, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Telefono1</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Telefono2, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@Model.Telefono2</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.EsInicio, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            <p>@(Model.EsInicio == 1 ? "NO" : "SI")</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Perfiles Asociados</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="back-item" data-val-url="/Externo/Index">Volver</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ExternoPerfils)
+                            {
+                                <tr>
+                                    <td>@item.Perfil.Descripcion</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            _formView();
+                            _formBack();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+}

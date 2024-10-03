@@ -1,0 +1,60 @@
+﻿@model List<com.msc.infraestructure.entities.PerfilControl>
+@{ 
+    Layout = null;
+} 
+<div id="msgTable" style="font-weight: bolder;">@ViewBag.Message</div>
+<br/>
+<table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Página</th>
+            <th>Descripción</th>
+            <th>Url</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.Id">
+                <td>@item.Control.Pagina.Descripcion</td>
+                <td>@item.Control.Descripcion</td>
+                <td>@item.Control.Url</td>
+                <td>@(item.Estado == 1 ? "Activo" : "Inactivo")</td>
+                <td>
+                    <div class="hidden-xs hidden-sm visible-md visible-lg">
+                        @if (item.Estado == 1)
+                        {
+                            <a href="#" class="ina-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-remove"></span> Inactivar</a>
+                        }
+                        else
+                        {
+                            <a href="#" class="act-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-ok"></span> Activar</a>
+                        }
+                        &nbsp;&nbsp;
+                        <a href="#" class="del-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+                    </div>
+                    <div class="visible-xs visible-sm hidden-md hidden-lg">
+                        @if (item.Estado == 1)
+                        {
+                            <a href="#" class="ina-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-remove"></span></a>
+                        }
+                        else
+                        {
+                            <a href="#" class="act-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-ok"></span></a>
+                        }
+                        &nbsp;&nbsp;
+                        <a href="#" class="del-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        _formEditPerfilControl();
+    });
+</script>
+

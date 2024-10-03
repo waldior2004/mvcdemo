@@ -1,0 +1,36 @@
+﻿@model List<com.msc.infraestructure.entities.ExternoPerfil>
+@{ 
+    Layout = null;
+} 
+<div id="msgTable" style="font-weight: bolder;">@ViewBag.Message</div>
+<br/>
+<table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.Id">
+                <td>@item.Perfil.Descripcion</td>
+                <td>
+                    <div class="hidden-xs hidden-sm visible-md visible-lg">
+                        <a href="#" class="del-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+                    </div>
+                    <div class="visible-xs visible-sm hidden-md hidden-lg">
+                        <a href="#" class="del-item" data-toggle="modal" data-val-id="@item.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        _formEditExternoPerfil();
+    });
+</script>
+
