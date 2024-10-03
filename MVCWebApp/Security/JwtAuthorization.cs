@@ -24,9 +24,9 @@ namespace com.msc.frontend.mvc
                 if (token != null)
                 {
                     var userName = Jwt.ValidateToken(token);
-                    if (userName == null)
+                    if (userName == string.Empty)
                     {
-                        filterContext.Controller.TempData["Message"] = MessagesApp.BackAppMessage(MessageCode.ExpirateSession).Descripcion;
+                        filterContext.Controller.TempData["Message"] = MessagesApp.BackAppMessage(MessageCode.CookieInvalida).Descripcion;
                     }
                     else
                         authenticated = true;
@@ -99,6 +99,16 @@ namespace com.msc.frontend.mvc
                             filterContext.Controller.ViewBag.Menu = new HtmlString((filterContext.HttpContext.Session["Perfil"] as PerfilDTO).MenuSup);
                         }
                     }
+                }
+                else
+                { 
+                    filterContext.Result = new RedirectToRouteResult(
+                                    new RouteValueDictionary(
+                                        new
+                                        {
+                                            controller = "Home",
+                                            action = "ErrorJson"
+                                        }));
                 }
             }
             catch (Exception ex)

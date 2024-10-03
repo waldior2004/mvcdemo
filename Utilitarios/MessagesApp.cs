@@ -34,7 +34,8 @@ namespace com.msc.infraestructure.utils
         CotizacionDetalleErrores = 27,
         CotizacionExistsOC = 28,
         OrdenCompraExists = 29,
-        OrdenCompraDetalleErrores = 30
+        OrdenCompraDetalleErrores = 30,
+        CookieInvalida = 31
 
     }
 
@@ -180,6 +181,9 @@ namespace com.msc.infraestructure.utils
                     break;
                 case MessageCode.OrdenCompraDetalleErrores:
                     objR = new Respuesta { Id = 1, Descripcion = "La Orden de Compra tiene productos con precio y/o Cantidad incorrectos" };
+                    break;
+                case MessageCode.CookieInvalida:
+                    objR = new Respuesta { Id = 1, Descripcion = "Cookie Invalida" };
                     break;
             }
             return objR;

@@ -49,7 +49,7 @@ namespace com.msc.infraestructure.utils
         public static string ValidateToken(string token)
         {
             if (token == null)
-                return null;
+                return string.Empty;
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Convert.ToString(ConfigurationManager.AppSettings["JwtKey"]));
@@ -74,7 +74,7 @@ namespace com.msc.infraestructure.utils
             }
             catch
             {
-                return null;
+                return string.Empty;
             }
         }
     }

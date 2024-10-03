@@ -122,26 +122,31 @@ namespace com.msc.frontend.mvc.Controllers
                             var jwtToken = Jwt.GenerateJWTAuthetication(model.Usuario, "role");
                             var validUserName = Jwt.ValidateToken(jwtToken);
 
-                            switch (user.Perfiles.Count)
+                            if (validUserName == string.Empty)
+                                result = MessagesApp.BackAppMessage(MessageCode.CookieInvalida);
+                            else
                             {
-                                case 0:
-                                    result = MessagesApp.BackAppMessage(MessageCode.NotProfileFound);
-                                    break;
-                                case 1:
-                                    Session["Tipo"] = "E";
-                                    Session["Perfil"] = user.Perfiles[0];
-                                    Session["Usuario"] = user;
-                                    result.PilaError = jwtToken;
+                                switch (user.Perfiles.Count)
+                                {
+                                    case 0:
+                                        result = MessagesApp.BackAppMessage(MessageCode.NotProfileFound);
+                                        break;
+                                    case 1:
+                                        Session["Tipo"] = "E";
+                                        Session["Perfil"] = user.Perfiles[0];
+                                        Session["Usuario"] = user;
+                                        result.PilaError = jwtToken;
 
-                                    break;
-                                default:
-                                    result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
-                                    Session["Perfil"] = user.Perfiles[0];
-                                    Session["Tipo"] = "E";
-                                    Session["Usuario"] = user;
-                                    result.PilaError = jwtToken;
+                                        break;
+                                    default:
+                                        result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
+                                        Session["Perfil"] = user.Perfiles[0];
+                                        Session["Tipo"] = "E";
+                                        Session["Usuario"] = user;
+                                        result.PilaError = jwtToken;
 
-                                    break;
+                                        break;
+                                }
                             }
                         }
                     }
@@ -159,25 +164,30 @@ namespace com.msc.frontend.mvc.Controllers
                                 var jwtToken = Jwt.GenerateJWTAuthetication(model.Usuario, "role");
                                 var validUserName = Jwt.ValidateToken(jwtToken);
 
-                                switch (user.Perfiles.Count)
+                                if (validUserName == string.Empty)
+                                    result = MessagesApp.BackAppMessage(MessageCode.CookieInvalida);
+                                else
                                 {
-                                    case 0:
-                                        result = MessagesApp.BackAppMessage(MessageCode.NotProfileFound);
-                                        break;
-                                    case 1:
-                                        Session["Tipo"] = "I";
-                                        Session["Perfil"] = user.Perfiles[0];
-                                        Session["Usuario"] = MapUsuarioToExternoDTO(user);
-                                        result.PilaError = jwtToken;
+                                    switch (user.Perfiles.Count)
+                                    {
+                                        case 0:
+                                            result = MessagesApp.BackAppMessage(MessageCode.NotProfileFound);
+                                            break;
+                                        case 1:
+                                            Session["Tipo"] = "I";
+                                            Session["Perfil"] = user.Perfiles[0];
+                                            Session["Usuario"] = MapUsuarioToExternoDTO(user);
+                                            result.PilaError = jwtToken;
 
-                                        break;
-                                    default:
-                                        result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
-                                        Session["Perfil"] = user.Perfiles[0];
-                                        Session["Tipo"] = "I";
-                                        Session["Usuario"] = MapUsuarioToExternoDTO(user);
-                                        result.PilaError = jwtToken;
-                                        break;
+                                            break;
+                                        default:
+                                            result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
+                                            Session["Perfil"] = user.Perfiles[0];
+                                            Session["Tipo"] = "I";
+                                            Session["Usuario"] = MapUsuarioToExternoDTO(user);
+                                            result.PilaError = jwtToken;
+                                            break;
+                                    }
                                 }
                             }
                             else
