@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace com.msc.services.dto
 {
@@ -11,7 +8,8 @@ namespace com.msc.services.dto
     [Serializable]
     public class ExternoDTO
     {
-        public ExternoDTO() {
+        public ExternoDTO()
+        {
             Perfiles = new List<PerfilDTO>();
         }
         [DataMember]

@@ -55,9 +55,8 @@ namespace com.msc.frontend.mvc
                         "~/Content/vendors/datatables.net-responsive/js/dataTables.responsive.min.js",
                         "~/Content/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js",
                         "~/Content/vendors/datatables.net-scroller/js/dataTables.scroller.min.js",
-                        "~/Content/vendors/jszip/dist/jszip.min.js",
-                        "~/Content/vendors/pdfmake/build/pdfmake.min.js",
-                        "~/Content/vendors/pdfmake/build/vfs_fonts.js"));
+                        "~/Content/vendors/jszip/dist/jszip.min.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/Home").Include(
                         "~/Content/vendors/jquery/dist/jquery.min.js",

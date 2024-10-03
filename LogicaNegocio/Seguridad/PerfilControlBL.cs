@@ -10,7 +10,7 @@ namespace com.msc.infraestructure.biz
         public PerfilControlBL()
         {
             _repositorio = new Repository();
-        }     
+        }
 
         public Respuesta EditPerfilControl(PerfilControl obj)
         {

@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\com.msc.wcf.entities\com.msc.wcf.entities.csproj">
+      <Project>{2c2920df-d2db-403c-9ff3-8264efe2a788}</Project>
+      <Name>com.msc.wcf.entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\com.msc.infraestructure.entities.csproj">
       <Project>{ec6db5f8-6f13-49c1-bb70-0e396e7394ef}</Project>
       <Name>com.msc.infraestructure.entities</Name>

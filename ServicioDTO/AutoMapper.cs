@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Globalization;
 using System.Reflection;
 
 namespace com.msc.services.dto
 {
     public static class AutoMapper
     {
-        public static T CreateMap<I, T>(this I source) {
+        public static T CreateMap<I, T>(this I source)
+        {
 
             object obj = typeof(T).GetConstructor(System.Type.EmptyTypes).Invoke(null);
             foreach (PropertyInfo property in typeof(I).GetProperties())

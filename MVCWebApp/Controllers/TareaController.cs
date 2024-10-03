@@ -1,11 +1,12 @@
 ﻿using com.msc.infraestructure.entities;
 using com.msc.infraestructure.utils;
-using com.msc.services.dto;
 using com.msc.services.dto.DataMapping;
 using com.msc.services.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using com.msc.wcf.entities;
+using com.msc.wcf.entities.Sistema;
 
 namespace com.msc.frontend.mvc.Controllers
 {
@@ -22,7 +23,12 @@ namespace com.msc.frontend.mvc.Controllers
                 var result = (HttpContext.Application["proxySistema"] as ISistema).ObtTarea();
                 foreach (var item in result)
                 {
-                    lst.Add(item.SetTarea());
+                    lst.Add(new Tarea { 
+                        Id = item.Id,
+                        Titulo = item.Titulo,
+                        Descripcion = item.Descripcion,
+                        Completado = item.Completado
+                    });
                 }
                 return View(lst);
             }
@@ -40,7 +46,13 @@ namespace com.msc.frontend.mvc.Controllers
             try
             {
                 var result = (HttpContext.Application["proxySistema"] as ISistema).ObtTarea(id);
-                return View(result.SetTarea());
+                return View(new Tarea
+                {
+                    Id = result.Id,
+                    Titulo = result.Titulo,
+                    Descripcion = result.Descripcion,
+                    Completado = result.Completado
+                });
             }
             catch (Exception ex)
             {
@@ -87,7 +99,24 @@ namespace com.msc.frontend.mvc.Controllers
                 }
                 else
                 {
-                    result = (HttpContext.Application["proxySistema"] as ISistema).EditTarea(obj.GetTareaDTO()).SetRespuesta();
+                    var dto = new TareaDTO
+                    {
+                        Id = obj.Id,
+                        Titulo = obj.Titulo,
+                        Descripcion = obj.Descripcion,
+                        Completado = obj.Completado
+                    };
+
+                    var resp = (HttpContext.Application["proxySistema"] as ISistema).EditTarea(dto);
+                    result = new Respuesta { 
+                        Id = resp.Id,
+                        Descripcion = resp.Descripcion,
+                        Message = resp.Message,
+                        Aplicacion = resp.Aplicacion,
+                        Metodo = resp.Metodo,
+                        PilaError = resp.PilaError,
+                        TipoError = resp.TipoError
+                    };
                 }
 
                 result.Metodo = "/Tarea/Index";
@@ -107,7 +136,13 @@ namespace com.msc.frontend.mvc.Controllers
             try
             {
                 var result = (HttpContext.Application["proxySistema"] as ISistema).ObtTarea(id);
-                return View(result.SetTarea());
+                return View(new Tarea
+                {
+                    Id = result.Id,
+                    Titulo = result.Titulo,
+                    Descripcion = result.Descripcion,
+                    Completado = result.Completado
+                });
             }
             catch (Exception ex)
             {
@@ -139,7 +174,26 @@ namespace com.msc.frontend.mvc.Controllers
                 }
                 else
                 {
-                    result = (HttpContext.Application["proxySistema"] as ISistema).EditTarea(obj.GetTareaDTO()).SetRespuesta();
+                    var dto = new TareaDTO
+                    {
+                        Id = obj.Id,
+                        Titulo = obj.Titulo,
+                        Descripcion = obj.Descripcion,
+                        Completado = obj.Completado
+                    };
+
+                    var resp = (HttpContext.Application["proxySistema"] as ISistema).EditTarea(dto);
+
+                    result = new Respuesta
+                    {
+                        Id = resp.Id,
+                        Descripcion = resp.Descripcion,
+                        Message = resp.Message,
+                        Aplicacion = resp.Aplicacion,
+                        Metodo = resp.Metodo,
+                        PilaError = resp.PilaError,
+                        TipoError = resp.TipoError
+                    };
                 }
 
                 result.Metodo = "/Tarea/Index";
@@ -169,7 +223,18 @@ namespace com.msc.frontend.mvc.Controllers
                     {
                         if (item != "")
                         {
-                            result = (HttpContext.Application["proxySistema"] as ISistema).ElimTarea(Convert.ToInt32(item)).SetRespuesta();
+                            var resp = (HttpContext.Application["proxySistema"] as ISistema).ElimTarea(Convert.ToInt32(item));
+                            result = new Respuesta
+                            {
+                                Id = resp.Id,
+                                Descripcion = resp.Descripcion,
+                                Message = resp.Message,
+                                Aplicacion = resp.Aplicacion,
+                                Metodo = resp.Metodo,
+                                PilaError = resp.PilaError,
+                                TipoError = resp.TipoError
+                            };
+
                             if (result.Id == 0)
                             {
                                 OK++;
@@ -189,8 +254,19 @@ namespace com.msc.frontend.mvc.Controllers
                     result.Message = Message;
                 }
                 else
-                    result = (HttpContext.Application["proxySistema"] as ISistema).ElimTarea(Convert.ToInt32(id)).SetRespuesta();
-
+                { 
+                    var resp = (HttpContext.Application["proxySistema"] as ISistema).ElimTarea(Convert.ToInt32(id));
+                    result = new Respuesta
+                    {
+                        Id = resp.Id,
+                        Descripcion = resp.Descripcion,
+                        Message = resp.Message,
+                        Aplicacion = resp.Aplicacion,
+                        Metodo = resp.Metodo,
+                        PilaError = resp.PilaError,
+                        TipoError = resp.TipoError
+                    };
+                }
                 result.Metodo = "/Tarea/Index";
                 return Json(result);
             }

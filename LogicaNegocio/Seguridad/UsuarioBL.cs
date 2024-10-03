@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using com.msc.infraestructure.dal;
+﻿using com.msc.infraestructure.dal;
 using com.msc.infraestructure.entities;
+using System.Collections.Generic;
 
 namespace com.msc.infraestructure.biz
 {

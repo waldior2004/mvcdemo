@@ -1,4 +1,4 @@
-﻿//var _root = "http://localhost";
+﻿//var _root = "http://localhost:5963";
 var _root = "http://localhost:4006";
 var _language = {
     "decimal": ".",
