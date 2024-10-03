@@ -10,6 +10,8 @@ using com.msc.infraestructure.utils;
 using com.msc.infraestructure.entities.mvc;
 using com.msc.services.interfaces;
 using System.Configuration;
+using System.Web.Helpers;
+using System.Web;
 
 namespace com.msc.frontend.mvc.Controllers
 {
@@ -117,6 +119,9 @@ namespace com.msc.frontend.mvc.Controllers
                         {
                             var user = (HttpContext.Application["proxySeguridad"] as ISeguridad).GetUserExternalAuthenticated(model.Usuario);
 
+                            var jwtToken = Jwt.GenerateJWTAuthetication(model.Usuario, "role");
+                            var validUserName = Jwt.ValidateToken(jwtToken);
+
                             switch (user.Perfiles.Count)
                             {
                                 case 0:
@@ -126,12 +131,16 @@ namespace com.msc.frontend.mvc.Controllers
                                     Session["Tipo"] = "E";
                                     Session["Perfil"] = user.Perfiles[0];
                                     Session["Usuario"] = user;
+                                    result.PilaError = jwtToken;
+
                                     break;
                                 default:
                                     result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
                                     Session["Perfil"] = user.Perfiles[0];
                                     Session["Tipo"] = "E";
                                     Session["Usuario"] = user;
+                                    result.PilaError = jwtToken;
+
                                     break;
                             }
                         }
@@ -145,29 +154,31 @@ namespace com.msc.frontend.mvc.Controllers
 
                             if (isValid)
                             {
-                                //result = (HttpContext.Application["proxySeguridad"] as ISeguridad).Authenticate(model.GetLoginDTO()).SetRespuesta();
+                                var user = (HttpContext.Application["proxySeguridad"] as ISeguridad).GetUserAuthenticated(model.Usuario);
 
-                                //if (result.Id == 0)
-                                //{
-                                    var user = (HttpContext.Application["proxySeguridad"] as ISeguridad).GetUserAuthenticated(model.Usuario);
-                                    switch (user.Perfiles.Count)
-                                    {
-                                        case 0:
-                                            result = MessagesApp.BackAppMessage(MessageCode.NotProfileFound);
-                                            break;
-                                        case 1:
-                                            Session["Tipo"] = "I";
-                                            Session["Perfil"] = user.Perfiles[0];
-                                            Session["Usuario"] = MapUsuarioToExternoDTO(user);
-                                            break;
-                                        default:
-                                            result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
-                                            Session["Perfil"] = user.Perfiles[0];
-                                            Session["Tipo"] = "I";
-                                            Session["Usuario"] = MapUsuarioToExternoDTO(user);
-                                            break;
-                                    }
-                                //}
+                                var jwtToken = Jwt.GenerateJWTAuthetication(model.Usuario, "role");
+                                var validUserName = Jwt.ValidateToken(jwtToken);
+
+                                switch (user.Perfiles.Count)
+                                {
+                                    case 0:
+                                        result = MessagesApp.BackAppMessage(MessageCode.NotProfileFound);
+                                        break;
+                                    case 1:
+                                        Session["Tipo"] = "I";
+                                        Session["Perfil"] = user.Perfiles[0];
+                                        Session["Usuario"] = MapUsuarioToExternoDTO(user);
+                                        result.PilaError = jwtToken;
+
+                                        break;
+                                    default:
+                                        result.Metodo = JsonConvert.SerializeObject(user.Perfiles);
+                                        Session["Perfil"] = user.Perfiles[0];
+                                        Session["Tipo"] = "I";
+                                        Session["Usuario"] = MapUsuarioToExternoDTO(user);
+                                        result.PilaError = jwtToken;
+                                        break;
+                                }
                             }
                             else
                             {

@@ -52,7 +52,7 @@
                         </a>
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                         {
-                            <a data-toggle="tooltip" data-placement="top" title="Cerrar Sesión" href="#" onclick="javascript:document.getElementById('logoutForm').submit()">
+                            <a data-toggle="tooltip" data-placement="top" title="Cerrar Sesión" href="#" onclick="_cerrarSesion();">
                                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                             </a>
                         }
@@ -152,7 +152,13 @@
             });
 
             _formStart();
+
         });
+
+    function _cerrarSesion() {
+        eraseCookie("jwt");
+        document.getElementById('logoutForm').submit();
+    }
 </script>
 <div>
     @Html.Partial("~/Views/Shared/_Modal.cshtml")

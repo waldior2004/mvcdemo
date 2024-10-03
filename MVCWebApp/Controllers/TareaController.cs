@@ -14,7 +14,7 @@ namespace com.msc.frontend.mvc.Controllers
         List<Tarea> lst = new List<Tarea>();
         Respuesta result = new Respuesta();
 
-        [Authorization]
+        [JwtAuthorization]
         public ActionResult Index()
         {
             try
@@ -34,7 +34,7 @@ namespace com.msc.frontend.mvc.Controllers
             }
         }
 
-        [Authorization]
+        [JwtAuthorization]
         public ActionResult View(int id)
         {
             try
@@ -50,7 +50,7 @@ namespace com.msc.frontend.mvc.Controllers
             }
         }
 
-        [Authorization]
+        [JwtAuthorization]
         public ActionResult New()
         {
             try
@@ -65,7 +65,7 @@ namespace com.msc.frontend.mvc.Controllers
             }
         }
 
-        [Authorization]
+        [JwtAuthorization]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult New(Tarea obj)
@@ -101,7 +101,7 @@ namespace com.msc.frontend.mvc.Controllers
             }
         }
 
-        [Authorization]
+        [JwtAuthorization]
         public ActionResult Edit(int id)
         {
             try
@@ -117,7 +117,7 @@ namespace com.msc.frontend.mvc.Controllers
             }
         }
 
-        [Authorization]
+        [JwtAuthorization]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult Edit(Tarea obj)
@@ -153,7 +153,7 @@ namespace com.msc.frontend.mvc.Controllers
             }
         }
 
-        [Authorization]
+        [JwtAuthorization]
         [HttpPost]
         public JsonResult Delete(string id)
         {
