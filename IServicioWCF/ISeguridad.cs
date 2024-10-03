@@ -7,6 +7,7 @@ namespace com.msc.services.interfaces
     [ServiceContract]
     public partial interface ISeguridad
     {
+        #region Login
         [OperationContract]
         ExternoDTO GetUserExternalAuthenticated(string user);
 
@@ -21,6 +22,7 @@ namespace com.msc.services.interfaces
 
         [OperationContract]
         RespuestaDTO ChangePassword(string Usuario, string Clave);
+        #endregion
 
         #region TipoControl
         [OperationContract]

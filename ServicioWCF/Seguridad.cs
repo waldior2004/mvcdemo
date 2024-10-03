@@ -35,6 +35,7 @@ namespace com.msc.services.implementations
             _paginaLogic = new PaginaBL();
         }
 
+        #region Login
         public RespuestaDTO ChangePassword(string Usuario, string Clave)
         {
             try
@@ -104,6 +105,7 @@ namespace com.msc.services.implementations
                 return null;
             }
         }
+        #endregion
 
         #region TipoControl
         public List<TipoControlDTO> ObtTipoControl()

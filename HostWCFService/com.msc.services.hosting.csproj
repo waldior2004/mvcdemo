@@ -67,7 +67,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reporte.svc" />
     <Content Include="Sistema.svc" />
     <Content Include="Seguridad.svc" />
     <Content Include="Web.config">

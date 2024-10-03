@@ -22,7 +22,6 @@
 
                     <div class="clearfix"></div>
 
-                    <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
                             <img src="~/Content/images/img.jpg" alt="..." class="img-circle profile_img">
@@ -32,14 +31,11 @@
                             <h2>@ViewBag.Usuario</h2>
                         </div>
                     </div>
-                    <!-- /menu profile quick info -->
 
                     <br />
 
-                    <!-- sidebar menu -->
                     @(ViewBag.Menu as IHtmlString)
-                    <!-- /sidebar menu -->
-                    <!-- /menu footer buttons -->
+
                     <div class="sidebar-footer hidden-small">
                         <a data-toggle="tooltip" data-placement="top" title="">
                            &nbsp; @*<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>*@
@@ -57,11 +53,9 @@
                             </a>
                         }
                     </div>
-                    <!-- /menu footer buttons -->
                 </div>
             </div>
 
-            <!-- top navigation -->
             <div class="top_nav">
                 <div class="nav_menu">
                     <nav>
@@ -76,53 +70,17 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    @*<li><a href="javascript:;"> Perfil</a></li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Ajustes</span>
-                                        </a>
-                                    </li>*@
                                     @if (Session["Tipo"].ToString() == "E")
                                     {
                                     <li>
                                         <a href="#" name="CHPass" data-val-user="@((Session["Usuario"] as com.msc.services.dto.ExternoDTO).Usuario)"><i class="fa fa-lock pull-right"></i> Cambiar Clave</a>
                                     </li>
                                     }
-                                    @*<li><a href="javascript:;">Ayuda</a></li>*@
                                     <li>
-                                        <a href="#" onclick="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a>
+                                        <a href="#" onclick="_cerrarSesion();"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a>
                                     </li>
                                 </ul>
                             </li>
-                            @*<li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
-                                </a>
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="~/Content/images/img.jpg" alt="Imagen del Perfil" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a>
-                                                <strong>Ver todas las alertas</strong>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>*@
                         </ul>
                     </nav>
                 </div>

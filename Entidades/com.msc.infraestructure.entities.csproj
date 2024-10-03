@@ -53,25 +53,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Externo.cs" />
-    <Compile Include="ExternoPerfil.cs" />
-    <Compile Include="Tarea.cs" />
-    <Compile Include="Control.cs" />
+    <Compile Include="Sistema\Externo.cs" />
+    <Compile Include="Sistema\ExternoPerfil.cs" />
+    <Compile Include="Sistema\Tarea.cs" />
+    <Compile Include="Seguridad\Control.cs" />
     <Compile Include="WebEntities\DataAnnotationExtension.cs" />
     <Compile Include="WebEntities\Filtro.cs" />
     <Compile Include="WebEntities\Login.cs" />
-    <Compile Include="Pagina.cs" />
+    <Compile Include="Seguridad\Pagina.cs" />
     <Compile Include="WebEntities\Paging.cs" />
-    <Compile Include="Perfil.cs" />
-    <Compile Include="PerfilControl.cs" />
-    <Compile Include="WebEntities\AutoComplete.cs" />
-    <Compile Include="WebEntities\DocumentoDropZone.cs" />
+    <Compile Include="Seguridad\Perfil.cs" />
+    <Compile Include="Seguridad\PerfilControl.cs" />
     <Compile Include="WebEntities\Respuesta.cs" />
-    <Compile Include="Rol.cs" />
-    <Compile Include="TipoControl.cs" />
+    <Compile Include="Seguridad\Rol.cs" />
+    <Compile Include="Seguridad\TipoControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="UsuarioPerfil.cs" />
+    <Compile Include="Seguridad\Usuario.cs" />
+    <Compile Include="Seguridad\UsuarioPerfil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

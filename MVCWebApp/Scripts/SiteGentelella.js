@@ -1092,6 +1092,93 @@ function _formBack() {
     });
 }
 
+function _formDetailExtend(name) {
+
+    _setToolTipsForm();
+
+    $("button[name=btnGrabar]").click(function (ev) {
+        ev.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: _root + $("#frm" + name).attr("action"),
+            data: $("#frm" + name).serialize(),
+            dataType: "json",
+            cache: false,
+            success: function (response) {
+                if (response.Id != 0) {
+                    _setErrorMessage(response.Descripcion);
+                } else {
+                    if ($("#Id").val() == "0")
+                        $("#Id").val(response.Metodo);
+                    _setSuccessMessage(response.Descripcion);
+                }
+            },
+            failure: function (response) {
+                _setErrorMessage("Error objeto ajax");
+            },
+            error: function (response) {
+                _setErrorMessage("Error objeto ajax");
+            }
+        });
+    });
+
+    $("#myDeleteExtend .btn-primary").unbind().bind("click", function (ev) {
+        if ($("#Id").val() > 0) {
+            $.ajax({
+                type: "POST",
+                url: _root + $(this).attr("data-val-url"),
+                data: { id: $("#myDeleteExtend input:first").val(), idPadre: $("#Id").val() },
+                cache: false,
+                success: function (response) {
+                    $("#myDeleteExtend").modal("hide");
+
+                    if (response.indexOf("Error de Sistema") >= 0)
+                        _setErrorMessage(response);
+                    else {
+                        _setSuccessMessage("Registro(s) eliminado(s) satisfactoriamente");
+                        $(".x_content").html(response);
+                    }
+                },
+                failure: function (response) {
+                    _setErrorMessage("Error objeto ajax");
+                },
+                error: function (response) {
+                    _setErrorMessage("Error objeto ajax");
+                }
+            });
+        } else {
+            _setErrorMessage("Antes de continuar debe guardar los datos de la cabecera");
+        }
+    });
+
+}
+
+function _formDetailDeleteExtend(name) {
+    $(".del-item").unbind().bind("click", function (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        $("#myDeleteExtend input:first").val($(this).attr("data-val-id"));
+        $("#myDeleteExtend .btn-primary").attr("data-val-url", "/" + name + "/Delete");
+        $("#myDeleteExtend").modal("show");
+    });
+}
+
+function _formDetailDeleteGroupExtend(name) {
+    $(".del-group").unbind().bind("click", function (ev) {
+        ev.preventDefault();
+        if (selected.length > 0) {
+            var codes = [];
+            $(selected).each(function (index) {
+                codes.push(this.replace("row_", ""));
+            });
+            $("#myDeleteExtend input:first").val(codes.join());
+            $("#myDeleteExtend .btn-primary").attr("data-val-url", "/" + name + "/Delete");
+            $("#myDeleteExtend").modal("show");
+        }
+        else
+            _setErrorMessage("Debe de seleccionar al menos un registro para continuar");
+    });
+}
 
 /***********Mantenimiento de Perfiles**********/
 

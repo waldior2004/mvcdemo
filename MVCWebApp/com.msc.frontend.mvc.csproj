@@ -3680,7 +3680,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\bootstrap.multiselect.js" />
     <Content Include="Content\vendors\animate.css\.bower.json" />
     <Content Include="Content\vendors\animate.css\animate-config.json" />
     <Content Include="Content\vendors\animate.css\bower.json" />
@@ -4553,7 +4552,6 @@
     <Content Include="Content\vendors\tether-master\src\css\tether-theme-arrows.sass" />
     <Content Include="Content\vendors\tether-master\src\css\tether-theme-basic.sass" />
     <Content Include="Content\vendors\tether-master\src\css\tether.sass" />
-    <Content Include="Formatos\FormatoExcelMSC.xls" />
     <None Include="Properties\PublishProfiles\PerfilAppMVC.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -4608,8 +4606,6 @@
     <Content Include="Views\Externo\View.cshtml" />
     <Content Include="Views\Externo\Edit.cshtml" />
     <Content Include="Views\ExternoPerfil\View.cshtml" />
-    <Content Include="Views\Shared\_Upload.cshtml" />
-    <Content Include="Views\Shared\_Bitacora.cshtml" />
     <Content Include="Views\Tarea\Index.cshtml" />
     <Content Include="Views\Tarea\View.cshtml" />
     <Content Include="Views\Tarea\Edit.cshtml" />
@@ -4619,8 +4615,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Attribute\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
