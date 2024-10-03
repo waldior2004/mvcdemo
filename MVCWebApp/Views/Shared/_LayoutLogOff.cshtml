@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/Content/images/favicon.ico" type="image/ico" />
+    <title>Mediterranean Shipping Company S.A.C.</title>
+    @Styles.Render("~/Content/Login")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Home")
+    @Scripts.Render("~/bundles/SiteGentelella")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).ajaxStart(function () {
+                showPleaseWait();
+            }).ajaxStop(function () {
+                hidePleaseWait();
+            });
+        });
+    </script>
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@Html.Partial("~/Views/Shared/_Modal.cshtml")

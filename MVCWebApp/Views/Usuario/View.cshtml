@@ -1,0 +1,82 @@
+﻿@model com.msc.infraestructure.entities.Usuario
+@{ 
+    Layout = null;
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Detalle del Usuario</h3>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Id</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.IdRol, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Rol.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Login, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Login</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Clave, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Clave</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Descripcion, new { @class = "col-md-3 control-label" })
+        <div class="col-md-8">
+            <p>@Model.Descripcion</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Perfiles Asociados</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="back-item" data-val-url="/Usuario/Index">Volver</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.UsuarioPerfils)
+                            {
+                                <tr>
+                                    <td>@item.Perfil.Descripcion</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            _formView();
+                            _formBack();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+}

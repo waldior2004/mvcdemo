@@ -1,0 +1,109 @@
+﻿@model com.msc.infraestructure.entities.Usuario
+@{
+    Layout = null;
+    ViewBag.Title = "Edición de Usuario";
+}
+    <div class="row">
+        <div class="col-md-8">
+            <h3>@ViewBag.Title</h3>
+        </div>
+    </div>
+    @using (Html.BeginForm((Model.Id == 0 ? "New" : "Edit"), "Usuario", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmUsuario" }))
+    {
+        @Html.AntiForgeryToken()
+        if (Model.Id == 0)
+        {
+            <div class="row form-group">
+                <div class="col-md-12">
+                    @Html.HiddenFor(m => m.Id)
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id, new { @class = "col-md-3 control-label", style = "text-align: left;" })
+                @Html.HiddenFor(m => m.Id)
+                <div class="col-md-8 control-label" style="text-align: left;">
+                    <span>@Model.Id</span>
+                </div>
+            </div>
+        }
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Rol del Usuario" data-toggle="tooltip" data-placement="right">
+                @Html.DropDownListFor(m => m.IdRol, (List<SelectListItem>)ViewBag.lstRoles, new { @class = "form-control has-feedback-left" })
+                <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="ID Login" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Login, new { @class = "form-control has-feedback-left", placeholder = "Usuario" })
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Contraseña asignada" data-toggle="tooltip" data-placement="right">
+                @Html.PasswordFor(m => m.Clave, new { @class = "form-control has-feedback-left", placeholder = "Ingrese Contraseña" })
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11 cols-sm-11 col-xs-11 col-lg-11" title="Confirmación de contraseña" data-toggle="tooltip" data-placement="right">
+                @Html.PasswordFor(m => m.Compare, new { @class = "form-control has-feedback-left", placeholder = "Reingrese Contraseña" })
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <div class="col-md-11" title="Breve Descripción" data-toggle="tooltip" data-placement="right">
+                @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control has-feedback-left", placeholder = "Descripción" })
+                <span class="fa fa-align-justify form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-1">
+                <button name="btnGrabar" type="submit" class="btn btn-primary">Grabar</button>
+            </div>
+        </div>
+    }
+<br/>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Perfiles Asociados</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width: 10px;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" class="del-group" data-val-url="/UsuarioPerfil/Delete">Eliminar</a>
+                                    <a href="#" class="back-item" data-val-url="/Usuario/Index">Volver</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="form-group has-feedback">
+                        <div class="col-md-8 col-sm-8 col-lg-8 col-xs-8" title="Perfil a asociar" data-toggle="tooltip" data-placement="right">
+                            @Html.DropDownList("ddlPerfil", (IEnumerable<SelectListItem>)ViewBag.lstPerfiles, new { @class = "form-control has-feedback-left" })
+                            <span class="fa fa-sort form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+                            <button name="btnAgregar" type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="x_content">
+                    @Html.Partial("~/Views/UsuarioPerfil/View.cshtml", Model.UsuarioPerfils)
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                            _formEditUsuario();
+                            _formBack();
+                        });
+                </script>
+            </div>
+        </div>
+    </div>
+
