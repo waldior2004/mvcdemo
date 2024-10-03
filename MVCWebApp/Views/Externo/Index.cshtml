@@ -28,7 +28,6 @@
                         <table id="datatable-responsive" class="table table-striped jambo_table table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Terminal</th>
                                     <th>Descripción</th>
                                     <th>RUC</th>
                                     <th>Usuario</th>
@@ -40,7 +39,6 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr id="row_@item.Id">
-                                        <td>@item.Terminal.Descripcion</td>
                                         <td>@item.DescTerminal</td>
                                         <td>@item.Ruc</td>
                                         <td>@item.Usuario</td>
@@ -65,7 +63,7 @@
                         </table>
                     <script type="text/javascript">
                             $(document).ready(function () {
-                                _formLoadExtend("Externo", [null, null, null, null, null, { orderable: false }]);
+                                _formLoadExtend("Externo", [null, null, null, null, { orderable: false }]);
                                 _formLoadExternos();
                             });
                     </script>

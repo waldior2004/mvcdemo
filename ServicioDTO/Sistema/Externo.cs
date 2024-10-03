@@ -9,7 +9,6 @@ namespace com.msc.services.dto
 {
     [DataContract]
     [Serializable]
-    [KnownType(typeof(TablaDTO))]
     public class ExternoDTO
     {
         public ExternoDTO() {
@@ -17,8 +16,6 @@ namespace com.msc.services.dto
         }
         [DataMember]
         public int Id { get; set; }
-        [DataMember]
-        public TablaDTO Terminal { get; set; }
         [DataMember]
         public string DescTerminal { get; set; }
         [DataMember]

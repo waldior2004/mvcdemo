@@ -117,7 +117,6 @@ namespace com.msc.infraestructure.dal
                            join r in context.Perfils on q.IdPerfil equals r.Id
                            where p.Usuario == user && p.AudActivo == 1 && q.AudActivo == 1 && r.AudActivo == 1
                            select p).FirstOrDefault();
-                    obj.Terminal = context.Tablas.Where(p => p.Id == obj.IdTerminal && p.AudActivo == 1).FirstOrDefault();
                     obj.ExternoPerfils = context.ExternoPerfils.Include("Perfil").Where(p => p.IdExterno == obj.Id && p.AudActivo == 1).ToList();
                     return obj;
                 }

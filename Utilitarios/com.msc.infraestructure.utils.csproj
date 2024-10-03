@@ -115,7 +115,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Directory.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Controllers.cs" />
     <Compile Include="Encrypt.cs" />
@@ -123,7 +122,6 @@
     <Compile Include="HTMLHelpers.cs" />
     <Compile Include="Jwt.cs" />
     <Compile Include="LogError.cs" />
-    <Compile Include="Mailing.cs" />
     <Compile Include="MessagesApp.cs" />
     <Compile Include="Printing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

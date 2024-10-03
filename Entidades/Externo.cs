@@ -17,14 +17,6 @@
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Column("ID_TERMINAL")]
-        [DisplayName("Terminal")]
-        [MyRequired]
-        public int IdTerminal { get; set; }
-
-        [ForeignKey("IdTerminal")]
-        public virtual Tabla Terminal { get; set; }
-
         [Column("DESC_TERMINAL")]
         [MaxLength(200)]
         [Required]

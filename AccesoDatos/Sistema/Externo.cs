@@ -107,7 +107,6 @@ namespace com.msc.infraestructure.dal
                             exists.AudUpdate = DateTime.Now;
                             objResp = MessagesApp.BackAppMessage(MessageCode.UpdateOK);
                             context.SaveChanges();
-                            Mailing.SendNotificationResetKey(exists.Email1, exists.Usuario, exists.Clave);
                     }
                 }
                 return objResp;
@@ -129,14 +128,12 @@ namespace com.msc.infraestructure.dal
                     {
                         obj.EsInicio = 1;
                         obj.Clave = Encrypt.GetPasswordGenerated();
-                        obj.Terminal = null;
                         obj.AudActivo = 1;
                         context.Externos.Add(obj);
                         context.SaveChanges();
                         objResp = MessagesApp.BackAppMessage(MessageCode.InsertOK);
                         context.Entry(obj).GetDatabaseValues();
                         objResp.Metodo = obj.Id.ToString();
-                        Mailing.SendNotificationCreateUser(obj.Email1, obj.Usuario, obj.Clave);
                     }
                     else
                     {
@@ -149,7 +146,6 @@ namespace com.msc.infraestructure.dal
                         }
                         else
                         {
-                            exists.IdTerminal = obj.IdTerminal;
                             exists.DescTerminal = obj.DescTerminal;
                             exists.Contacto = obj.Contacto;
                             exists.Ruc = obj.Ruc;

@@ -104,9 +104,6 @@ namespace com.msc.frontend.mvc.Controllers
         {
             try
             {
-                //Grupo 001 Terminales
-                var lstP = (HttpContext.Application["proxySistema"] as ISistema).ObtTablaGrupo("001");
-                this.loadSelectTablas(lstP, 0, "Terminal", "001");
                 var lst2 = (HttpContext.Application["proxySeguridad"] as ISeguridad).ObtPerfil();
                 this.loadSelectPerfiles(lst2, 0);
                 return View("Edit", new Externo { Id = 0, DescTerminal = "" });
@@ -160,12 +157,10 @@ namespace com.msc.frontend.mvc.Controllers
             try
             {
                 //Grupo 001 Terminales
-                var lstP = (HttpContext.Application["proxySistema"] as ISistema).ObtTablaGrupo("001");
                 var lst2 = (HttpContext.Application["proxySeguridad"] as ISeguridad).ObtPerfil();
                 this.loadSelectPerfiles(lst2, 0);
                 var result = (HttpContext.Application["proxySistema"] as ISistema).ObtExterno(id);
                 var objR = result.SetExterno();
-                this.loadSelectTablas(lstP, objR.IdTerminal, "Terminal", "001");
                 return View(objR);
             }
             catch (Exception ex)

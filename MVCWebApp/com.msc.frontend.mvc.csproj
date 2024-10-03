@@ -180,49 +180,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\TareaController.cs" />
     <Compile Include="Controllers\CascadeController.cs" />
-    <Compile Include="Controllers\EmpresaController.cs" />
-    <Compile Include="Controllers\ImpuestoProveedorController.cs" />
-    <Compile Include="Controllers\OrdenCompraDocController.cs" />
-    <Compile Include="Controllers\ContactoProveedorController.cs" />
-    <Compile Include="Controllers\DetalleOrdenCompraController.cs" />
-    <Compile Include="Controllers\OrdenCompraController.cs" />
-    <Compile Include="Controllers\DetalleCotizacionController.cs" />
-    <Compile Include="Controllers\DetallePedidoController.cs" />
-    <Compile Include="Controllers\FamiliaController.cs" />
-    <Compile Include="Controllers\CotizacionController.cs" />
-    <Compile Include="Controllers\ReporteController.cs" />
-    <Compile Include="Controllers\AreaSolicitanteController.cs" />
-    <Compile Include="Controllers\CentroCostoController.cs" />
-    <Compile Include="Controllers\SucursalController.cs" />
-    <Compile Include="Controllers\PedidoController.cs" />
-    <Compile Include="Controllers\SubFamiliaController.cs" />
-    <Compile Include="Controllers\GenCotizaController.cs" />
-    <Compile Include="Controllers\ImpuestoController.cs" />
-    <Compile Include="Controllers\BancoController.cs" />
-    <Compile Include="Controllers\ProvisionController.cs" />
-    <Compile Include="Controllers\ValOrdenCompraController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controllers\ValPedidoController.cs" />
-    <Compile Include="Controllers\ValidarLiquiCController.cs" />
-    <Compile Include="Controllers\CondEspeCliController.cs" />
-    <Compile Include="Controllers\CondEspeCliDiaController.cs" />
-    <Compile Include="Controllers\CondEspeCliDocController.cs" />
-    <Compile Include="Controllers\CargaLiquiCController.cs" />
-    <Compile Include="Controllers\DatoComercialController.cs" />
-    <Compile Include="Controllers\ProductoController.cs" />
-    <Compile Include="Controllers\ProveedorController.cs" />
-    <Compile Include="Controllers\TarifarioController.cs" />
-    <Compile Include="Controllers\TarifarioDocController.cs" />
-    <Compile Include="Controllers\UploadController.cs" />
-    <Compile Include="Controllers\TarifaCEDocController.cs" />
-    <Compile Include="Controllers\TarifaCEController.cs" />
     <Compile Include="Controllers\ExternoController.cs" />
-    <Compile Include="Controllers\TablaController.cs" />
-    <Compile Include="Controllers\GrupoTablaController.cs" />
     <Compile Include="Controllers\ExternoPerfilController.cs" />
-    <Compile Include="Controllers\AutoCompleteController.cs" />
-    <Compile Include="Controllers\CondEspeCliDetalleController.cs" />
     <Compile Include="Controllers\UsuarioPerfilController.cs" />
     <Compile Include="Controllers\PerfilControlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,40 +191,11 @@
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\TipoControlController.cs" />
-    <Compile Include="Impresiones\OrdenCompra.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrdenCompra.xsd</DependentUpon>
-    </Compile>
     <Compile Include="JwtAuthorization.cs" />
-    <Compile Include="Reportes\EnergiaConten\EnergiaConten.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EnergiaConten.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\EnergiaConten\EnergiaConten.aspx.cs">
-      <DependentUpon>EnergiaConten.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reportes\EnergiaConten\EnergiaConten.aspx.designer.cs">
-      <DependentUpon>EnergiaConten.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\Trazabilidad\Trazabilidad.aspx.cs">
-      <DependentUpon>Trazabilidad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reportes\Trazabilidad\Trazabilidad.aspx.designer.cs">
-      <DependentUpon>Trazabilidad.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\Trazabilidad\Trazabilidad.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Trazabilidad.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3748,8 +3678,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Reportes\EnergiaConten\EnergiaConten.aspx" />
-    <Content Include="Reportes\Trazabilidad\Trazabilidad.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.multiselect.js" />
@@ -4625,41 +4553,8 @@
     <Content Include="Content\vendors\tether-master\src\css\tether-theme-arrows.sass" />
     <Content Include="Content\vendors\tether-master\src\css\tether-theme-basic.sass" />
     <Content Include="Content\vendors\tether-master\src\css\tether.sass" />
-    <Content Include="Reportes\EnergiaConten\EnergiaConten.xsc">
-      <DependentUpon>EnergiaConten.xsd</DependentUpon>
-    </Content>
     <Content Include="Formatos\FormatoExcelMSC.xls" />
-    <Content Include="Impresiones\OrdenCompra.xsc">
-      <DependentUpon>OrdenCompra.xsd</DependentUpon>
-    </Content>
-    <None Include="Impresiones\OrdenCompra.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrdenCompra.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Impresiones\OrdenCompra.xss">
-      <DependentUpon>OrdenCompra.xsd</DependentUpon>
-    </Content>
-    <None Include="Reportes\EnergiaConten\EnergiaConten.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EnergiaConten.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Reportes\EnergiaConten\EnergiaConten.xss">
-      <DependentUpon>EnergiaConten.xsd</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\PerfilAppMVC.pubxml" />
-    <Content Include="Reportes\Trazabilidad\Trazabilidad.xsc">
-      <DependentUpon>Trazabilidad.xsd</DependentUpon>
-    </Content>
-    <None Include="Reportes\Trazabilidad\Trazabilidad.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Trazabilidad.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Reportes\Trazabilidad\Trazabilidad.xss">
-      <DependentUpon>Trazabilidad.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -4687,10 +4582,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Shared\_LayoutLogOff.cshtml" />
-    <Content Include="Views\TipoControl\Index.cshtml" />
-    <Content Include="Views\TipoControl\Edit.cshtml" />
     <Content Include="Views\Shared\_Forms.cshtml" />
-    <Content Include="Views\TipoControl\View.cshtml" />
     <Content Include="Views\Home\ErrorJson.cshtml" />
     <Content Include="Views\Pagina\Index.cshtml" />
     <Content Include="Views\Pagina\View.cshtml" />
@@ -4712,113 +4604,18 @@
     <Content Include="Views\Usuario\View.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\UsuarioPerfil\View.cshtml" />
-    <Content Include="Views\GrupoTabla\Index.cshtml" />
-    <Content Include="Views\GrupoTabla\View.cshtml" />
-    <Content Include="Views\GrupoTabla\Edit.cshtml" />
-    <Content Include="Views\Tabla\Index.cshtml" />
-    <Content Include="Views\Tabla\View.cshtml" />
-    <Content Include="Views\Tabla\Edit.cshtml" />
     <Content Include="Views\Externo\Index.cshtml" />
     <Content Include="Views\Externo\View.cshtml" />
     <Content Include="Views\Externo\Edit.cshtml" />
     <Content Include="Views\ExternoPerfil\View.cshtml" />
-    <Content Include="Views\TarifaCE\Index.cshtml" />
-    <Content Include="Views\TarifaCE\View.cshtml" />
-    <Content Include="Views\TarifaCE\Edit.cshtml" />
-    <Content Include="Views\TarifaCEDoc\View.cshtml" />
     <Content Include="Views\Shared\_Upload.cshtml" />
     <Content Include="Views\Shared\_Bitacora.cshtml" />
-    <Content Include="Views\TarifaCE\Historial.cshtml" />
-    <Content Include="Views\CondEspeCli\Index.cshtml" />
-    <Content Include="Views\CondEspeCli\Cliente.cshtml" />
-    <Content Include="Views\CondEspeCli\EditCliente.cshtml" />
-    <Content Include="Views\CondEspeCliDetalle\View.cshtml" />
-    <Content Include="Views\CondEspeCliDetalle\Edit.cshtml" />
-    <Content Include="Views\CondEspeCliDia\Edit.cshtml" />
-    <Content Include="Views\CondEspeCliDia\Table.cshtml" />
-    <Content Include="Views\CondEspeCli\View.cshtml" />
-    <Content Include="Views\CondEspeCliDia\Detail.cshtml" />
-    <Content Include="Views\CondEspeCli\Historial.cshtml" />
-    <Content Include="Views\CondEspeCli\TipoCarga.cshtml" />
-    <Content Include="Views\CargaLiquiC\Index.cshtml" />
-    <Content Include="Views\CargaLiquiC\View.cshtml" />
-    <Content Include="Views\CargaLiquiC\Detail.cshtml" />
-    <Content Include="Views\Producto\Edit.cshtml" />
-    <Content Include="Views\Producto\Index.cshtml" />
-    <Content Include="Views\Producto\View.cshtml" />
-    <Content Include="Views\Tarifario\Edit.cshtml" />
-    <Content Include="Views\Tarifario\Index.cshtml" />
-    <Content Include="Views\Tarifario\View.cshtml" />
-    <Content Include="Views\TarifarioDoc\View.cshtml" />
-    <Content Include="Views\DatoComercial\View.cshtml" />
-    <Content Include="Views\Proveedor\Edit.cshtml" />
-    <Content Include="Views\Proveedor\Index.cshtml" />
-    <Content Include="Views\ValidarLiquiC\Index.cshtml" />
-    <Content Include="Views\ContactoProveedor\Edit.cshtml" />
-    <Content Include="Views\ContactoProveedor\View.cshtml" />
-    <Content Include="Views\DatoComercial\Edit.cshtml" />
-    <Content Include="Views\Reporte\EnergiaConten.cshtml" />
-    <Content Include="Views\Tarifario\Historico.cshtml" />
-    <Content Include="Views\CondEspeCli\Excepcional.cshtml" />
-    <Content Include="Views\Proveedor\View.cshtml" />
-    <Content Include="Views\Sucursal\Index.cshtml" />
-    <Content Include="Views\Sucursal\Edit.cshtml" />
-    <Content Include="Views\Sucursal\View.cshtml" />
-    <Content Include="Views\AreaSolicitante\Edit.cshtml" />
-    <Content Include="Views\AreaSolicitante\Index.cshtml" />
-    <Content Include="Views\AreaSolicitante\View.cshtml" />
-    <Content Include="Views\CentroCosto\Edit.cshtml" />
-    <Content Include="Views\CentroCosto\Index.cshtml" />
-    <Content Include="Views\CentroCosto\View.cshtml" />
-    <Content Include="Views\Pedido\Edit.cshtml" />
-    <Content Include="Views\Pedido\Index.cshtml" />
-    <Content Include="Views\Pedido\View.cshtml" />
-    <Content Include="Views\DetallePedido\View.cshtml" />
-    <Content Include="Views\Familia\Edit.cshtml" />
-    <Content Include="Views\Familia\Index.cshtml" />
-    <Content Include="Views\Familia\View.cshtml" />
-    <Content Include="Views\SubFamilia\Edit.cshtml" />
-    <Content Include="Views\SubFamilia\Index.cshtml" />
-    <Content Include="Views\SubFamilia\View.cshtml" />
-    <Content Include="Views\DetallePedido\Edit.cshtml" />
-    <Content Include="Views\DetallePedido\Detail.cshtml" />
-    <Content Include="Views\ValPedido\Index.cshtml" />
-    <Content Include="Views\GenCotiza\Index.cshtml" />
-    <Content Include="Views\GenCotiza\Edit.cshtml" />
-    <Content Include="Views\Cotizacion\Index.cshtml" />
-    <Content Include="Views\Cotizacion\View.cshtml" />
-    <Content Include="Views\Cotizacion\Edit.cshtml" />
-    <Content Include="Views\DetalleCotizacion\Detail.cshtml" />
-    <Content Include="Views\DetalleCotizacion\Edit.cshtml" />
-    <Content Include="Views\DetalleCotizacion\View.cshtml" />
-    <Content Include="Views\GenCotiza\View.cshtml" />
-    <Content Include="Views\GenCotiza\Compare.cshtml" />
-    <Content Include="Views\OrdenCompra\Edit.cshtml" />
-    <Content Include="Views\OrdenCompra\Index.cshtml" />
-    <Content Include="Views\OrdenCompra\View.cshtml" />
-    <Content Include="Views\DetalleOrdenCompra\Detail.cshtml" />
-    <Content Include="Views\DetalleOrdenCompra\Edit.cshtml" />
-    <Content Include="Views\DetalleOrdenCompra\View.cshtml" />
-    <Content Include="Views\ValOrdenCompra\Index.cshtml" />
-    <Content Include="Views\OrdenCompra\Facturar.cshtml" />
-    <Content Include="Views\Impuesto\Edit.cshtml" />
-    <Content Include="Views\Impuesto\Index.cshtml" />
-    <Content Include="Views\Impuesto\View.cshtml" />
-    <Content Include="Views\ImpuestoProveedor\Edit.cshtml" />
-    <Content Include="Views\ImpuestoProveedor\View.cshtml" />
-    <Content Include="Views\Banco\Edit.cshtml" />
-    <Content Include="Views\Banco\Index.cshtml" />
-    <Content Include="Views\Banco\View.cshtml" />
-    <Content Include="Views\Empresa\Edit.cshtml" />
-    <Content Include="Views\Empresa\Index.cshtml" />
-    <Content Include="Views\Empresa\View.cshtml" />
-    <Content Include="Views\Provision\Edit.cshtml" />
-    <Content Include="Views\Provision\Index.cshtml" />
-    <Content Include="Views\Provision\View.cshtml" />
-    <Content Include="Views\Reporte\Trazabilidad.cshtml" />
     <Content Include="Views\Tarea\Index.cshtml" />
     <Content Include="Views\Tarea\View.cshtml" />
     <Content Include="Views\Tarea\Edit.cshtml" />
+    <Content Include="Views\TipoControl\Edit.cshtml" />
+    <Content Include="Views\TipoControl\Index.cshtml" />
+    <Content Include="Views\TipoControl\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4849,21 +4646,6 @@
       <Project>{615a65a5-5f19-4b45-857c-f5ebfdb2bf5f}</Project>
       <Name>com.msc.infraestructure.utils</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Reportes\EnergiaConten\EnergiaConten.rdlc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Impresiones\OrdenCompra.rdlc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Reportes\Trazabilidad\Trazabilidad.rdlc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

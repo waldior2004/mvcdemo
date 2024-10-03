@@ -13,11 +13,6 @@ namespace com.msc.services.dto.DataMapping
         {
             var objR = source.CreateMap<Externo, ExternoDTO>();
 
-            if (source.Terminal != null)
-                objR.Terminal = source.Terminal.CreateMap<Tabla, TablaDTO>();
-            else
-                objR.Terminal = new TablaDTO { Id = source.IdTerminal };
-
             if (source.ExternoPerfils.Count > 0)
                 foreach (var item in source.ExternoPerfils)
                 {
@@ -37,11 +32,6 @@ namespace com.msc.services.dto.DataMapping
         public static Externo SetExterno(this ExternoDTO source)
         {
             var objR = source.CreateMap<ExternoDTO, Externo>();
-            if (source.Terminal != null)
-            {
-                objR.IdTerminal = source.Terminal.Id;
-                objR.Terminal = source.Terminal.CreateMap<TablaDTO, Tabla>();
-            }
 
             if (source.Perfiles != null)
             {

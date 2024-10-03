@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Reporte.cs" />
     <Compile Include="Sistema.cs" />
     <Compile Include="Seguridad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

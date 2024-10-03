@@ -49,53 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Reporte\TrazabilidadBL.cs" />
-    <Compile Include="Reporte\EnergiaContenBL.cs" />
     <Compile Include="Sistema\TareaBL.cs" />
-    <Compile Include="Sistema\BitacoraBL.cs" />
-    <Compile Include="Sistema\CargaLiquiBL.cs" />
-    <Compile Include="Sistema\AreaSolicitanteBL.cs" />
-    <Compile Include="Sistema\CentroCostoBL.cs" />
-    <Compile Include="Sistema\EmpresaBL.cs" />
-    <Compile Include="Sistema\ImpuestoProveedorBL.cs" />
-    <Compile Include="Sistema\OrdenCompraDocBL.cs" />
-    <Compile Include="Sistema\DetalleOrdenCompraBL.cs" />
-    <Compile Include="Sistema\OrdenCompraBL.cs" />
-    <Compile Include="Sistema\CotizacionBL.cs" />
-    <Compile Include="Sistema\DetalleCotizacionBL.cs" />
-    <Compile Include="Sistema\ImpuestoBL.cs" />
-    <Compile Include="Sistema\BancoBL.cs" />
-    <Compile Include="Sistema\ProvisionBL.cs" />
-    <Compile Include="Sistema\UbigeoBL.cs" />
-    <Compile Include="Sistema\TempoPedidoBL.cs" />
-    <Compile Include="Sistema\DetallePedidoBL.cs" />
-    <Compile Include="Sistema\SucursalBL.cs" />
-    <Compile Include="Sistema\PedidoBL.cs" />
-    <Compile Include="Sistema\PuertoBL.cs" />
-    <Compile Include="Sistema\ViajeBL.cs" />
-    <Compile Include="Sistema\NaveBL.cs" />
-    <Compile Include="Sistema\ClienteBL.cs" />
-    <Compile Include="Sistema\CondEspeCliDiaBL.cs" />
-    <Compile Include="Sistema\CondEspeCliDetalleBL.cs" />
-    <Compile Include="Sistema\ContactoProveedorBL.cs" />
-    <Compile Include="Sistema\DatoComercialBL.cs" />
-    <Compile Include="Sistema\DocumentoBL.cs" />
-    <Compile Include="Sistema\CondEspeCliBL.cs" />
-    <Compile Include="Sistema\CondEspeCliDocBL.cs" />
-    <Compile Include="Sistema\CargaLiquiCBL.cs" />
-    <Compile Include="Sistema\FamiliaBL.cs" />
-    <Compile Include="Sistema\ProductoBL.cs" />
-    <Compile Include="Sistema\ProveedorBL.cs" />
-    <Compile Include="Sistema\SubFamiliaBL.cs" />
-    <Compile Include="Sistema\TarifaCEDocBL.cs" />
     <Compile Include="Seguridad\LoginBL.cs" />
     <Compile Include="Seguridad\PaginaBL.cs" />
     <Compile Include="Seguridad\ControBL.cs" />
     <Compile Include="Seguridad\ExternoPerfilBL.cs" />
-    <Compile Include="Sistema\TarifaCEBL.cs" />
-    <Compile Include="Sistema\GrupoTablaBL.cs" />
     <Compile Include="Sistema\ExternoBL.cs" />
-    <Compile Include="Sistema\TablaBL.cs" />
     <Compile Include="Seguridad\UsuarioPerfilBL.cs" />
     <Compile Include="Seguridad\PerfilControlBL.cs" />
     <Compile Include="Seguridad\RolBL.cs" />
@@ -103,8 +62,6 @@
     <Compile Include="Seguridad\UsuarioBL.cs" />
     <Compile Include="Seguridad\TipoControBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sistema\TarifarioBL.cs" />
-    <Compile Include="Sistema\TarifarioDocBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\com.msc.infraestructure.dal.csproj">
