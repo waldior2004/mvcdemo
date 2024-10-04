@@ -51,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. USECASE", "2. USECASE", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. ADAPTERS", "3. ADAPTERS", "{DC1AEF04-DF15-4604-B4F6-6E4FFAD25EC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.msc.unit.test", "com.msc.unit.test\com.msc.unit.test.csproj", "{601C8F36-E35E-41BA-97ED-FE739AE6D502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{9687C350-F8FA-452B-A954-218420D835BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9687C350-F8FA-452B-A954-218420D835BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9687C350-F8FA-452B-A954-218420D835BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601C8F36-E35E-41BA-97ED-FE739AE6D502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601C8F36-E35E-41BA-97ED-FE739AE6D502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601C8F36-E35E-41BA-97ED-FE739AE6D502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601C8F36-E35E-41BA-97ED-FE739AE6D502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
